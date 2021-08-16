@@ -1,0 +1,217 @@
+version: "2.0"
+session_config:
+  session_expiration_time: 0
+  carry_over_slots_to_new_session: true
+intents:
+- Salutations:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- inform:
+    use_entities: true
+- Remerciement:
+    use_entities: true
+- role:
+    use_entities: true
+- medecin:
+    use_entities: true
+- Pharmacies:
+    use_entities: true
+- bot_challenge:
+    use_entities: true            
+- stop:
+    use_entities: true
+- out_of_scope:
+    use_entities: true
+- chitchat:
+    use_entities: true
+- affirm:
+    use_entities: true
+- deny:
+    use_entities: true
+- nlu_fallback:
+    use_entities: true  
+entities:
+- location
+- medecin
+- specialiste
+slots:
+  location:
+    type: rasa.shared.core.slots.TextSlot
+    influence_conversation: false
+  medecin_slot:
+    type: rasa.shared.core.slots.CategoricalSlot
+    auto_fill: false
+    influence_conversation: true
+    values:
+    - generaliste
+    - specialiste
+  requested_slot:
+    type: rasa.shared.core.slots.TextSlot
+    influence_conversation: false
+  specialiste_slot:
+    type: rasa.shared.core.slots.CategoricalSlot
+    auto_fill: false
+    influence_conversation: true
+    values:
+    - dentiste
+    - ophtalmologue
+    - gynecologue
+    - laboratoire
+    - cardiologue
+    - kinesitherapeute
+    - imagerie medicale
+    - orl
+    - neurologue
+    - chirurgien orthopedique
+    - urologue
+    - gastro-enterologue
+    - dermatologue
+    - rhumatologue
+    - endocrinologue
+    - orthoptiste
+    - audioprothesiste
+    - pediatre
+    - stomatologue
+    - clinique
+    - hopital
+responses:
+  utter_chitchat/ask_name:
+  - text: Mon nom c'est Kiné 😎 .
+  - text: je m'appelle Kiné 😊 .
+  - text: Kiné pour vous servir 🧐 .
+  utter_chitchat/how_are_you:
+  - text: Merci de demander je vais tres bien ☺! Que puis je faire pour vous ?
+  - text: Super! et vous ? Que puis je faire pour vous ?
+  - text: Ahh la vie de bot vous savez 🦾. Que puis je faire pour vous ?
+  utter_chitchat/bot_challenge:
+  - text: Je suis un bot 🤓, je fais partie de la famille DSI 👨‍👩‍👧‍👦.
+  - text: Ca peut parraitre bizarre mais je ne suis pas humain 🤭, je suis un bot de la DSI 👨‍👩‍👧‍👦!
+  - text: Oui je suis un bot et vous 🤔?
+  utter_out_of_scope:
+  - text: Désolé, Je ne suis pas sûr de savoir comment répondre à cela. Pour une assisatance tapez "help" ou "aide" 🙏.  
+  utter_default:
+  - text: Désolé, je ne comprends pas, essayez de reformule la question sil vous plait 🙏.
+  - text: Je ne comprends pas 🤔, pouvez vous reformuler ?
+  - text: Je ne comprends pas 🤔 pouvez vous reformuler s'il vous plait 🙏?
+  utter_ask_location:
+  - text: Dans quelle localité vous trouvez vous ?
+  utter_ask_continue:
+  - text: "Voulez vous continuez ?"
+  utter_ask_whatelse:
+  - text: Que puis-je faire d'autre pour vous 🙏?
+  utter_after_deny:
+  - text: "Merci je reste à l'écoute"
+  utter_ask_medecin_slot:
+  - text: Quel type de medecin voulez vous un généraliste ou un spécialiste ?
+  - text: Vous avez besoin de quel type de medecin, un généraliste ou un spécialiste
+      ?
+  utter_ask_specialiste_slot:
+  - text: Quel type de specialiste voulez vous ?
+  - text: Vous avez besoin de quel specialiste ?
+  utter_bye:
+  - text: Merci et à bientot. Bye.
+  - text: Nous sommes à votre entière disposition
+  - text: Ce fut un plaisir à bientot.
+  - text: A plus tard !
+  utter_thanks:
+  - text: De rien ✌!
+  - text: C'est un plaisir ✌!  
+  - text: Merci à vous.
+  - text: Nous sommes à votre entière disposition
+  - text: C'est moi qui vous remercie.
+  utter_bot_role:
+  - text: je peux fournir des réponses sur des questions relatives aux RH principalement
+      d'ordre sanitaire.
+  - text: Un mal quelconque? Demander moi des informations sur les pharmacies ou medecins
+      les plus proche!
+  - text: C'est moi qui vous remercie.
+  utter_did_that_help:
+  - text: Etes vous satisfait(e)?
+  utter_wrong_medecin_slot:
+  - text: Veuillez choisir entre generaliste et specialiste s'il vous plait.
+  utter_wrong_specialiste_slot:
+  - text: Veuillez choisir le bon specialiste s'il vous plait.
+  utter_iamabot:
+  - text: Je suis Kiné votre correspondante ARTP. Je peux vous assiter sur les
+      questions d'ordre RH.
+  - text: Je suis le bot Kiné .
+  utter_salutations:
+  - buttons:
+    - payload: /role
+      title: Aide
+    channel: socketio
+    text: Helloo! moi c'est Kiné votre correspondante healthcare ARTP, et je vais vous assister
+      tout au long de votre parcours. Que puis je faire pour vous 🙏 ? Pour une assisatance vous pouvez taper "help" ou "aide" 😉.
+  - image: https://www.artpsenegal.net/sites/default/files/artp_logo_artp.png
+    text: Bonjour, moi c'est Kiné votre correspondante healthcare ARTP, et je vais vous assister
+      tout au long de votre parcours. Que puis je faire pour vous 🙏 ? Pour une assisatance vous pouvez taper "help" ou "aide" 😉.
+  - button_type: vertical
+    buttons:
+    - payload: /role
+      title: Aide
+    channel: telegram
+    text: Helloo! moi c'est Kiné votre correspondante healthcare ARTP, et je vais vous assister
+      tout au long de votre parcours. Que puis je faire pour vous 🙏 ? Pour une assisatance vous pouvez taper "help" ou "aide" 😉.
+actions:
+- action_medecin_searching
+- action_pharmacie_searching
+- action_searching
+- utter_ask_location
+- utter_bot_role
+- utter_ask_medecin_slot
+- utter_ask_specialiste_slot
+- utter_bye
+- utter_salutations
+- utter_thanks
+- utter_wrong_medecin_slot
+- utter_wrong_specialiste_slot
+- validate_medecin_form
+- validate_pharmacie_form
+- utter_out_of_scope
+- utter_default
+- utter_welcome
+- utter_ask_continue
+- utter_ask_whatelse
+- utter_after_deny
+- utter_did_that_help
+- utter_iamabot
+forms:
+  medecin_form:
+    ignored_intents:  
+      - bot_challenge
+      - Salutations
+      - Remerciement
+      - chitchat
+    required_slots:      
+      location:
+      - type: from_entity
+        entity: location
+        intent:
+        - inform
+        - medecin
+      medecin_slot:
+      - type: from_entity
+        entity: medecin
+        intent:
+        - inform
+        - medecin   
+      specialiste_slot:
+      - type: from_entity
+        entity: specialiste
+        intent:
+        - inform
+        - medecin  
+  pharmacie_form:
+    ignored_intents:  
+      - bot_challenge
+      - Salutations
+      - Remerciement  
+      - chitchat  
+    required_slots:      
+      location:
+      - type: from_entity
+        entity: location
+        intent:
+        - inform
+        - Pharmacies   
