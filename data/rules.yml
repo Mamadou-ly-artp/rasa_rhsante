@@ -1,0 +1,39 @@
+version: "2.0"
+rules:
+  - rule: respond to chitchat
+    steps:
+    - intent: chitchat
+    - action: utter_chitchat
+
+  - rule: Ask the user to rephrase whenever they send a message with low NLU confidence
+    steps:
+    - intent: nlu_fallback
+    - action: utter_default
+
+  - rule: start open pharmacie form
+    steps:
+    - intent: Pharmacies
+    - action: pharmacie_form
+    - active_loop: pharmacie_form
+
+  - rule: submit open pharmacie form
+    condition:
+      - active_loop: pharmacie_form
+    steps:
+    - action: pharmacie_form
+    - active_loop: null
+    - action: action_pharmacie_searching
+
+  - rule: start open medecin form
+    steps:
+    - intent: medecin
+    - action: medecin_form
+    - active_loop: medecin_form
+
+  - rule: submit open medecin form
+    condition:
+      - active_loop: medecin_form
+    steps:
+    - action: medecin_form
+    - active_loop: null
+    - action: action_medecin_searching
