@@ -922,6 +922,7 @@ nlu:
     - bouche
     - buccal
     - je cherche un [dentiste](specialiste)
+    - Y’a t il des postes de santé aux alentours?
 - intent: Salutations
   examples: |
     - Bonjour
@@ -1022,7 +1023,7 @@ nlu:
     - votre nom c'est comment ?
     - votre nom svp
     - nom svp ?
-    - votre nom?    
+    - votre nom?
 - intent: chitchat/how_are_you
   examples: |
     - Tu vas bien ?
@@ -1072,7 +1073,7 @@ nlu:
     - what can you do
     - I need some help
     - help me
-    - can you please help me  
+    - can you please help me
 - intent: inform
   examples: |
     - [almadies](location)
@@ -1256,8 +1257,6 @@ nlu:
     - you cannot help me with what I want
     - I think you cant help me
     - hm i don't think you can do what i want
-    - stop
-    - stop go back
     - do you get anything?
     - and you call yourself bot company? pff
     - and that's it?
@@ -1267,7 +1266,6 @@ nlu:
     - euh oui
     - faisons le
     - oui
-    - euh oui
     - um oui
     - c'est exact
     - oui oui
@@ -1275,7 +1273,6 @@ nlu:
     - uh yes
     - let's do it
     - yeah
-    - uh yes
     - um yes
     - that's correct
     - yes yes
@@ -1289,7 +1286,7 @@ nlu:
 - intent: deny
   examples: |
     - non
-    - non pas ca 
+    - non pas ca
     - non merci
     - euh non
     - avez-vous autre chose
