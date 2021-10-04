@@ -12,8 +12,7 @@ stories:
   - intent: Remerciement
   - action: utter_thanks
   - intent: goodbye
-  - action: utter_bye   
-
+  - action: utter_bye
 - story: search Pharmacies hapy path form
   steps:
   - intent: Pharmacies
@@ -21,7 +20,6 @@ stories:
   - active_loop: pharmacie_form
   - active_loop: null
   - action: action_pharmacie_searching
-
 - story: stop form for pharmacie + continue
   steps:
   - intent: Pharmacies
@@ -33,7 +31,6 @@ stories:
   - action: pharmacie_form
   - active_loop: null
   - action: action_pharmacie_searching
-
 - story: stop form for parmacie + stop
   steps:
   - intent: Pharmacies
@@ -45,7 +42,6 @@ stories:
   - action: action_deactivate_loop
   - active_loop: null
   - action: utter_after_deny
-
 - story: search medecin hapy path form
   steps:
   - intent: Salutations
@@ -58,8 +54,7 @@ stories:
   - intent: Remerciement
   - action: utter_thanks
   - intent: goodbye
-  - action: utter_bye   
-
+  - action: utter_bye
 - story: search medecin hapy path form
   steps:
   - intent: medecin
@@ -67,7 +62,6 @@ stories:
   - active_loop: medecin_form
   - active_loop: null
   - action: action_medecin_searching
-
 - story: stop form for medecin + continue
   steps:
   - intent: medecin
@@ -79,7 +73,6 @@ stories:
   - action: medecin_form
   - active_loop: null
   - action: action_medecin_searching
-
 - story: stop form for medecin + stop
   steps:
   - intent: medecin
@@ -90,8 +83,7 @@ stories:
   - intent: deny
   - action: action_deactivate_loop
   - active_loop: null
-  - action: utter_after_deny 
-
+  - action: utter_after_deny
 - story: search medecin form switch to search pharmacies form
   steps:
   - intent: medecin
@@ -102,7 +94,6 @@ stories:
   - active_loop: pharmacie_form
   - active_loop: null
   - action: action_pharmacie_searching
-
 - story: search pharmacies form  switch to search medecin form
   steps:
   - intent: Pharmacies
@@ -113,27 +104,22 @@ stories:
   - active_loop: medecin_form
   - active_loop: null
   - action: action_medecin_searching
-
 - story: say goodbye
   steps:
   - intent: goodbye
   - action: utter_bye
-
 - story: say my role
   steps:
   - intent: role
   - action: utter_bot_role
-
 - story: thanks you
   steps:
   - intent: Remerciement
   - action: utter_thanks
-  
 - story: bot challenge
   steps:
   - intent: bot_challenge
-  - action: utter_iamabot
-
+  - action: utter_chitchat/bot_challenge
 - story: Salutations
   steps:
   - intent: Salutations
