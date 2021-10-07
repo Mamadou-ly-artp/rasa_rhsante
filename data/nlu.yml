@@ -512,6 +512,14 @@ nlu:
     - je cherhche une pharmacie
     - je cherche une pharmacie à [oukam](location)
     - trousse de secours
+    - J’ai besoin d’un pharmacien
+    - Je cherche une pharmacie à [yoff](location)
+    - Je cherche une pharmacie
+    - Pharmacie
+    - Je cherche une pharmacie à [dakar](location)
+    - Je cherche une pharmacie a [dakar](location)
+    - Pharmacie zac [Mbao](location)
+    - Pharmacie à proximité de [ouakam](location)
 - intent: medecin
   examples: |
     - J'ai besoin d'un [dentiste](specialiste)
@@ -923,6 +931,17 @@ nlu:
     - buccal
     - je cherche un [dentiste](specialiste)
     - Y’a t il des postes de santé aux alentours?
+    - Je cherche un médecin
+    - gériatrie
+    - Besoin d'un médecin à [pikine](location)
+    - Un [ophtalmologiste](specialiste)
+    - Un [cardiologue](specialiste) à [mermoz](location)
+    - [Pédiatre](specialiste)
+    - Un [cardiologue](specialiste) à [fann](location)
+    - Un [cardiologue](specialiste) à dakar
+    - Un [cardiologue](specialiste) à [Saint Louis](location)
+    - Un [généraliste](medecin)
+    - Médecin près de [mermoz](location)
 - intent: Salutations
   examples: |
     - Bonjour
@@ -967,6 +986,8 @@ nlu:
     - hello there
     - hello friend
     - hello
+    - bonjour
+    - Hi
 - intent: Remerciement
   examples: |
     - Merci
@@ -986,6 +1007,7 @@ nlu:
     - great thanks
     - appreciate it
     - cool thanks
+    - Ok merci
 - intent: chitchat/bot_challenge
   examples: |
     - are you a bot?
@@ -1047,33 +1069,64 @@ nlu:
     - hi Comment allez-vous
     - bonjour Comment allez-vous
 - intent: role
-  examples: |
-    - aide
-    - aidez moi
-    - que peux tu faire?
-    - quel est ton role?
-    - tu sais faire quoi?
-    - dis moi ce que tu sais faire
-    - quel est ton métier ?
-    - tu sers à quoi ?
-    - En quoi est ce que tu peux m'aider ?
-    - quel est ton domaine métier ?
-    - à quoi bon peux tu servir ?
-    - que sais tu faire
-    - I need help
-    - j'ai besoin d'aide
-    - peut tu m'aider
-    - j'ai besoin d'un peu d'aide
-    - pouvez vous m'aider svp
-    - pouvez vous m'aider s'il vous plait
-    - aider moi svp
-    - aider moi s'il vous plait
-    - what can you help me with
-    - can you help me
-    - what can you do
-    - I need some help
-    - help me
-    - can you please help me
+  examples:
+  - text: |
+      aide
+  - text: |
+      aidez moi
+  - text: |
+      que peux tu faire?
+  - text: |
+      quel est ton role?
+  - text: |
+      tu sais faire quoi?
+  - text: |
+      dis moi ce que tu sais faire
+  - text: |
+      quel est ton métier ?
+  - text: |
+      tu sers à quoi ?
+  - text: |
+      En quoi est ce que tu peux m'aider ?
+  - text: |
+      quel est ton domaine métier ?
+  - text: |
+      à quoi bon peux tu servir ?
+  - text: |
+      que sais tu faire
+  - text: |
+      I need help
+  - text: |
+      j'ai besoin d'aide
+  - text: |
+      peut tu m'aider
+  - text: |
+      j'ai besoin d'un peu d'aide
+  - text: |
+      pouvez vous m'aider svp
+  - text: |
+      pouvez vous m'aider s'il vous plait
+  - text: |
+      aider moi svp
+  - text: |
+      aider moi s'il vous plait
+  - text: |
+      what can you help me with
+  - text: |
+      can you help me
+  - text: |
+      what can you do
+  - text: |
+      I need some help
+  - text: |
+      help me
+  - text: |
+      can you please help me
+  - text: |
+      Que sais tu faire
+      ?
+  - text: |
+      Help
 - intent: inform
   examples: |
     - [almadies](location)
@@ -1174,6 +1227,13 @@ nlu:
     - [pediatre](specialiste)
     - [stomatologue](specialiste)
     - [speialiste](medecin)
+    - [Mamelles](location)
+    - [Ophtalmologue](specialiste)
+    - [Almadies](location)
+    - [Dakar](location)
+    - [Ouakam](location)
+    - Cité [keur gorgui](location)
+    - [Pikine](location)
 - intent: goodbye
   examples: |
     - bye
@@ -1283,6 +1343,7 @@ nlu:
     - yes and i dont care
     - right on
     - i love that
+    - Oui
 - intent: deny
   examples: |
     - non

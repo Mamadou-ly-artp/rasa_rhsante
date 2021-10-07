@@ -124,3 +124,7 @@ stories:
   steps:
   - intent: Salutations
   - action: utter_salutations
+- story: Start
+  steps:
+  - intent: start
+  - action: utter_salutations
