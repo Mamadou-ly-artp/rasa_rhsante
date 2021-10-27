@@ -1,0 +1,1406 @@
+version: "2.0"
+nlu:
+- intent: Pharmacies
+  examples: |
+    - Je veux une pharmacie
+    - je cherche une pharmacie
+    - Où puis je trouver une pharmacie?
+    - J'aurai besoin d'une pharmacie pas très loin.
+    - Peux tu me donner le nom de quelques pharmacies?
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies.
+    - Y a t'il des pharmacie ici?
+    - Liste moi quelques pharmacies.
+    - Où puis je acheter des médicaments?
+    - Je veux acheter des médicaments
+    - pharmacie à
+    - une pharmacie à
+    - pharmacie
+    - médicament
+    - ordonnance
+    - pharmacien
+    - comprimé
+    - pharmaceutique
+    - pharmacologie
+    - pharma
+    - creme
+    - pharmacopee
+    - sirop
+    - aspirine
+    - paracetamol
+    - pilules
+    - boite secours
+    - pansements
+    - ampoule
+    - cachet
+    - capsule
+    - poison
+    - traitement
+    - trousse pharmacie
+    - antibiotique
+    - Je veux une pharmacie à [dakar](location)
+    - Je veux une pharmacie à [rufisque](location)
+    - Je veux une pharmacie à [yoff](location)
+    - Je veux une pharmacie à [yeumbeul](location)
+    - Je veux une pharmacie à [bourguiba](location)
+    - Je veux une pharmacie à [liberte 5](location)
+    - Je veux une pharmacie à [liberte 6](location)
+    - Je veux une pharmacie à [ngor](location)
+    - Je veux une pharmacie à [parcelles](location)
+    - Je veux une pharmacie à [medina](location)
+    - Je veux une pharmacie à [pasteur](location)
+    - Je veux une pharmacie à [foire](location)
+    - Je veux une pharmacie à [ouakam](location)
+    - Je veux une pharmacie à [pikine](location)
+    - Je veux une pharmacie à [sicap](location)
+    - Je veux une pharmacie à [djambars](location)
+    - Je veux une pharmacie à [corniche ouest](location)
+    - Je veux une pharmacie à [grand yoff](location)
+    - Je veux une pharmacie à [thiaroye](location)
+    - Je veux une pharmacie à [colobane](location)
+    - Je veux une pharmacie à [keur djaraf](location)
+    - Je veux une pharmacie à [guediawaye](location)
+    - Je veux une pharmacie à [mermoz](location)
+    - Je veux une pharmacie à [gentina](location)
+    - Je veux une pharmacie à [nord](location)
+    - Je veux une pharmacie à [gorgui](location)
+    - Je veux une pharmacie à [mamelles](location)
+    - Je veux une pharmacie à [hann maristes](location)
+    - Je veux une pharmacie à [maristes](location)
+    - Je veux une pharmacie à [point e](location)
+    - Je veux une pharmacie à [sacre coeur](location)
+    - Je veux une pharmacie à [parcelles assainies](location)
+    - Je veux une pharmacie à [keur massar](location)
+    - Je veux une pharmacie à [patte d'oie](location)
+    - Je veux une pharmacie à [front de terre](location)
+    - Je veux une pharmacie à [vdn](location)
+    - Je veux une pharmacie à [dalifort](location)
+    - Je veux une pharmacie à [gueule tapee](location)
+    - Je veux une pharmacie à [technopole](location)
+    - je cherche une pharmacie à [dakar](location)
+    - je cherche une pharmacie à [rufisque](location)
+    - je cherche une pharmacie à [yoff](location)
+    - je cherche une pharmacie à [yeumbeul](location)
+    - je cherche une pharmacie à [bourguiba](location)
+    - je cherche une pharmacie à [liberte 5](location)
+    - je cherche une pharmacie à [liberte 6](location)
+    - je cherche une pharmacie à [ngor](location)
+    - je cherche une pharmacie à [parcelles](location)
+    - je cherche une pharmacie à [medina](location)
+    - je cherche une pharmacie à [pasteur](location)
+    - je cherche une pharmacie à [foire](location)
+    - je cherche une pharmacie à [ouakam](location)
+    - je cherche une pharmacie à [pikine](location)
+    - je cherche une pharmacie à [sicap](location)
+    - je cherche une pharmacie à [djambars](location)
+    - je cherche une pharmacie à [corniche ouest](location)
+    - je cherche une pharmacie à [grand yoff](location)
+    - je cherche une pharmacie à [thiaroye](location)
+    - je cherche une pharmacie à [colobane](location)
+    - je cherche une pharmacie à [keur djaraf](location)
+    - je cherche une pharmacie à [guediawaye](location)
+    - je cherche une pharmacie à [mermoz](location)
+    - je cherche une pharmacie à [gentina](location)
+    - je cherche une pharmacie à [nord](location)
+    - je cherche une pharmacie à [gorgui](location)
+    - je cherche une pharmacie à [mamelles](location)
+    - je cherche une pharmacie à [hann maristes](location)
+    - je cherche une pharmacie à [maristes](location)
+    - je cherche une pharmacie à [point e](location)
+    - je cherche une pharmacie à [sacre coeur](location)
+    - je cherche une pharmacie à [parcelles assainies](location)
+    - je cherche une pharmacie à [keur massar](location)
+    - je cherche une pharmacie à [patte d'oie](location)
+    - je cherche une pharmacie à [front de terre](location)
+    - je cherche une pharmacie à [vdn](location)
+    - je cherche une pharmacie à [dalifort](location)
+    - je cherche une pharmacie à [gueule tapee](location)
+    - je cherche une pharmacie à [technopole](location)
+    - Où puis je trouver une pharmacie à [dakar](location) ?
+    - Où puis je trouver une pharmacie à [rufisque](location) ?
+    - Où puis je trouver une pharmacie à [yoff](location) ?
+    - Où puis je trouver une pharmacie à [yeumbeul](location) ?
+    - Où puis je trouver une pharmacie à [bourguiba](location) ?
+    - Où puis je trouver une pharmacie à [liberte 5](location) ?
+    - Où puis je trouver une pharmacie à [liberte 6](location) ?
+    - Où puis je trouver une pharmacie à [ngor](location) ?
+    - Où puis je trouver une pharmacie à [parcelles](location) ?
+    - Où puis je trouver une pharmacie à [medina](location) ?
+    - Où puis je trouver une pharmacie à [pasteur](location) ?
+    - Où puis je trouver une pharmacie à [foire](location) ?
+    - Où puis je trouver une pharmacie à [ouakam](location) ?
+    - Où puis je trouver une pharmacie à [pikine](location) ?
+    - Où puis je trouver une pharmacie à [sicap](location) ?
+    - Où puis je trouver une pharmacie à [djambars](location) ?
+    - Où puis je trouver une pharmacie à [corniche ouest](location) ?
+    - Où puis je trouver une pharmacie à [grand yoff](location) ?
+    - Où puis je trouver une pharmacie à [thiaroye](location) ?
+    - Où puis je trouver une pharmacie à [colobane](location) ?
+    - Où puis je trouver une pharmacie à [keur djaraf](location) ?
+    - Où puis je trouver une pharmacie à [guediawaye](location) ?
+    - Où puis je trouver une pharmacie à [mermoz](location) ?
+    - Où puis je trouver une pharmacie à [gentina](location) ?
+    - Où puis je trouver une pharmacie à [nord](location) ?
+    - Où puis je trouver une pharmacie à [gorgui](location) ?
+    - Où puis je trouver une pharmacie à [mamelles](location) ?
+    - Où puis je trouver une pharmacie à [hann maristes](location) ?
+    - Où puis je trouver une pharmacie à [maristes](location) ?
+    - Où puis je trouver une pharmacie à [point e](location) ?
+    - Où puis je trouver une pharmacie à [sacre coeur](location) ?
+    - Où puis je trouver une pharmacie à [parcelles assainies](location) ?
+    - Où puis je trouver une pharmacie à [keur massar](location) ?
+    - Où puis je trouver une pharmacie à [patte d'oie](location) ?
+    - Où puis je trouver une pharmacie à [front de terre](location) ?
+    - Où puis je trouver une pharmacie à [vdn](location) ?
+    - Où puis je trouver une pharmacie à [dalifort](location) ?
+    - Où puis je trouver une pharmacie à [gueule tapee](location) ?
+    - Où puis je trouver une pharmacie à [technopole](location) ?
+    - J'aurai besoin d'une pharmacie pas très loin de [dakar](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [rufisque](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [yoff](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [yeumbeul](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [bourguiba](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [liberte 5](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [liberte 6](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [ngor](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [parcelles](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [medina](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [pasteur](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [foire](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [ouakam](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [pikine](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [sicap](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [djambars](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [corniche ouest](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [grand yoff](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [thiaroye](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [colobane](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [keur djaraf](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [guediawaye](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [mermoz](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [gentina](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [nord](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [gorgui](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [mamelles](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [hann maristes](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [maristes](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [point e](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [sacre coeur](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [parcelles assainies](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [keur massar](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [patte d'oie](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [front de terre](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [vdn](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [dalifort](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [gueule tapee](location)
+    - J'aurai besoin d'une pharmacie pas très loin de [technopole](location)
+    - Peux tu me donner le nom de quelques pharmacies à [dakar](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [rufisque](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [yoff](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [yeumbeul](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [bourguiba](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [liberte 5](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [liberte 6](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [ngor](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [parcelles](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [medina](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [pasteur](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [foire](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [ouakam](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [pikine](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [sicap](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [djambars](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [corniche ouest](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [grand yoff](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [thiaroye](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [colobane](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [keur djaraf](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [guediawaye](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [mermoz](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [gentina](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [nord](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [gorgui](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [mamelles](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [hann maristes](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [maristes](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [point e](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [sacre coeur](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [parcelles assainies](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [keur massar](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [patte d'oie](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [front de terre](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [vdn](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [dalifort](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [gueule tapee](location) ?
+    - Peux tu me donner le nom de quelques pharmacies à [technopole](location) ?
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [dakar](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [rufisque](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [yoff](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [yeumbeul](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [bourguiba](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [liberte 5](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [liberte 6](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [ngor](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [parcelles](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [medina](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [pasteur](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [foire](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [ouakam](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [pikine](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [sicap](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [djambars](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [corniche ouest](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [grand yoff](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [thiaroye](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [colobane](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [keur djaraf](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [guediawaye](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [mermoz](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [gentina](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [nord](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [gorgui](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [mamelles](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [hann maristes](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [maristes](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [point e](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [sacre coeur](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [parcelles assainies](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [keur massar](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [patte d'oie](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [front de terre](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [vdn](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [dalifort](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [gueule tapee](location)
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques pharmacies à [technopole](location)
+    - Y a t'il des pharmacie à [dakar](location) ?
+    - Y a t'il des pharmacie à [rufisque](location) ?
+    - Y a t'il des pharmacie à [yoff](location) ?
+    - Y a t'il des pharmacie à [yeumbeul](location) ?
+    - Y a t'il des pharmacie à [bourguiba](location) ?
+    - Y a t'il des pharmacie à [liberte 5](location) ?
+    - Y a t'il des pharmacie à [liberte 6](location) ?
+    - Y a t'il des pharmacie à [ngor](location) ?
+    - Y a t'il des pharmacie à [parcelles](location) ?
+    - Y a t'il des pharmacie à [medina](location) ?
+    - Y a t'il des pharmacie à [pasteur](location) ?
+    - Y a t'il des pharmacie à [foire](location) ?
+    - Y a t'il des pharmacie à [ouakam](location) ?
+    - Y a t'il des pharmacie à [pikine](location) ?
+    - Y a t'il des pharmacie à [sicap](location) ?
+    - Y a t'il des pharmacie à [djambars](location) ?
+    - Y a t'il des pharmacie à [corniche ouest](location) ?
+    - Y a t'il des pharmacie à [grand yoff](location) ?
+    - Y a t'il des pharmacie à [thiaroye](location) ?
+    - Y a t'il des pharmacie à [colobane](location) ?
+    - Y a t'il des pharmacie à [keur djaraf](location) ?
+    - Y a t'il des pharmacie à [guediawaye](location) ?
+    - Y a t'il des pharmacie à [mermoz](location) ?
+    - Y a t'il des pharmacie à [gentina](location) ?
+    - Y a t'il des pharmacie à [nord](location) ?
+    - Y a t'il des pharmacie à [gorgui](location) ?
+    - Y a t'il des pharmacie à [mamelles](location) ?
+    - Y a t'il des pharmacie à [hann maristes](location) ?
+    - Y a t'il des pharmacie à [maristes](location) ?
+    - Y a t'il des pharmacie à [point e](location) ?
+    - Y a t'il des pharmacie à [sacre coeur](location) ?
+    - Y a t'il des pharmacie à [parcelles assainies](location) ?
+    - Y a t'il des pharmacie à [keur massar](location) ?
+    - Y a t'il des pharmacie à [patte d'oie](location) ?
+    - Y a t'il des pharmacie à [front de terre](location) ?
+    - Y a t'il des pharmacie à [vdn](location) ?
+    - Y a t'il des pharmacie à [dalifort](location) ?
+    - Y a t'il des pharmacie à [gueule tapee](location) ?
+    - Y a t'il des pharmacie à [technopole](location) ?
+    - Liste moi quelques pharmacies à [dakar](location)
+    - Liste moi quelques pharmacies à [rufisque](location)
+    - Liste moi quelques pharmacies à [yoff](location)
+    - Liste moi quelques pharmacies à [yeumbeul](location)
+    - Liste moi quelques pharmacies à [bourguiba](location)
+    - Liste moi quelques pharmacies à [liberte 5](location)
+    - Liste moi quelques pharmacies à [liberte 6](location)
+    - Liste moi quelques pharmacies à [ngor](location)
+    - Liste moi quelques pharmacies à [parcelles](location)
+    - Liste moi quelques pharmacies à [medina](location)
+    - Liste moi quelques pharmacies à [pasteur](location)
+    - Liste moi quelques pharmacies à [foire](location)
+    - Liste moi quelques pharmacies à [ouakam](location)
+    - Liste moi quelques pharmacies à [pikine](location)
+    - Liste moi quelques pharmacies à [sicap](location)
+    - Liste moi quelques pharmacies à [djambars](location)
+    - Liste moi quelques pharmacies à [corniche ouest](location)
+    - Liste moi quelques pharmacies à [grand yoff](location)
+    - Liste moi quelques pharmacies à [thiaroye](location)
+    - Liste moi quelques pharmacies à [colobane](location)
+    - Liste moi quelques pharmacies à [keur djaraf](location)
+    - Liste moi quelques pharmacies à [guediawaye](location)
+    - Liste moi quelques pharmacies à [mermoz](location)
+    - Liste moi quelques pharmacies à [gentina](location)
+    - Liste moi quelques pharmacies à [nord](location)
+    - Liste moi quelques pharmacies à [gorgui](location)
+    - Liste moi quelques pharmacies à [mamelles](location)
+    - Liste moi quelques pharmacies à [hann maristes](location)
+    - Liste moi quelques pharmacies à [maristes](location)
+    - Liste moi quelques pharmacies à [point e](location)
+    - Liste moi quelques pharmacies à [sacre coeur](location)
+    - Liste moi quelques pharmacies à [parcelles assainies](location)
+    - Liste moi quelques pharmacies à [keur massar](location)
+    - Liste moi quelques pharmacies à [patte d'oie](location)
+    - Liste moi quelques pharmacies à [front de terre](location)
+    - Liste moi quelques pharmacies à [vdn](location)
+    - Liste moi quelques pharmacies à [dalifort](location)
+    - Liste moi quelques pharmacies à [gueule tapee](location)
+    - Liste moi quelques pharmacies à [technopole](location)
+    - Où puis je acheter des médicaments à [dakar](location) ?
+    - Où puis je acheter des médicaments à [rufisque](location) ?
+    - Où puis je acheter des médicaments à [yoff](location) ?
+    - Où puis je acheter des médicaments à [yeumbeul](location) ?
+    - Où puis je acheter des médicaments à [bourguiba](location) ?
+    - Où puis je acheter des médicaments à [liberte 5](location) ?
+    - Où puis je acheter des médicaments à [liberte 6](location) ?
+    - Où puis je acheter des médicaments à [ngor](location) ?
+    - Où puis je acheter des médicaments à [parcelles](location) ?
+    - Où puis je acheter des médicaments à [medina](location) ?
+    - Où puis je acheter des médicaments à [pasteur](location) ?
+    - Où puis je acheter des médicaments à [foire](location) ?
+    - Où puis je acheter des médicaments à [ouakam](location) ?
+    - Où puis je acheter des médicaments à [pikine](location) ?
+    - Où puis je acheter des médicaments à [sicap](location) ?
+    - Où puis je acheter des médicaments à [djambars](location) ?
+    - Où puis je acheter des médicaments à [corniche ouest](location) ?
+    - Où puis je acheter des médicaments à [grand yoff](location) ?
+    - Où puis je acheter des médicaments à [thiaroye](location) ?
+    - Où puis je acheter des médicaments à [colobane](location) ?
+    - Où puis je acheter des médicaments à [keur djaraf](location) ?
+    - Où puis je acheter des médicaments à [guediawaye](location) ?
+    - Où puis je acheter des médicaments à [mermoz](location) ?
+    - Où puis je acheter des médicaments à [gentina](location) ?
+    - Où puis je acheter des médicaments à [nord](location) ?
+    - Où puis je acheter des médicaments à [gorgui](location) ?
+    - Où puis je acheter des médicaments à [mamelles](location) ?
+    - Où puis je acheter des médicaments à [hann maristes](location) ?
+    - Où puis je acheter des médicaments à [maristes](location) ?
+    - Où puis je acheter des médicaments à [point e](location) ?
+    - Où puis je acheter des médicaments à [sacre coeur](location) ?
+    - Où puis je acheter des médicaments à [parcelles assainies](location) ?
+    - Où puis je acheter des médicaments à [keur massar](location) ?
+    - Où puis je acheter des médicaments à [patte d'oie](location) ?
+    - Où puis je acheter des médicaments à [front de terre](location) ?
+    - Où puis je acheter des médicaments à [vdn](location) ?
+    - Où puis je acheter des médicaments à [dalifort](location) ?
+    - Où puis je acheter des médicaments à [gueule tapee](location) ?
+    - Où puis je acheter des médicaments à [technopole](location) ?
+    - Je veux acheter des médicaments à [dakar](location)
+    - Je veux acheter des médicaments à [rufisque](location)
+    - Je veux acheter des médicaments à [yoff](location)
+    - Je veux acheter des médicaments à [yeumbeul](location)
+    - Je veux acheter des médicaments à [bourguiba](location)
+    - Je veux acheter des médicaments à [liberte 5](location)
+    - Je veux acheter des médicaments à [liberte 6](location)
+    - Je veux acheter des médicaments à [ngor](location)
+    - Je veux acheter des médicaments à [parcelles](location)
+    - Je veux acheter des médicaments à [medina](location)
+    - Je veux acheter des médicaments à [pasteur](location)
+    - Je veux acheter des médicaments à [foire](location)
+    - Je veux acheter des médicaments à [ouakam](location)
+    - Je veux acheter des médicaments à [pikine](location)
+    - Je veux acheter des médicaments à [sicap](location)
+    - Je veux acheter des médicaments à [djambars](location)
+    - Je veux acheter des médicaments à [corniche ouest](location)
+    - Je veux acheter des médicaments à [grand yoff](location)
+    - Je veux acheter des médicaments à [thiaroye](location)
+    - Je veux acheter des médicaments à [colobane](location)
+    - Je veux acheter des médicaments à [keur djaraf](location)
+    - Je veux acheter des médicaments à [guediawaye](location)
+    - Je veux acheter des médicaments à [mermoz](location)
+    - Je veux acheter des médicaments à [gentina](location)
+    - Je veux acheter des médicaments à [nord](location)
+    - Je veux acheter des médicaments à [gorgui](location)
+    - Je veux acheter des médicaments à [mamelles](location)
+    - Je veux acheter des médicaments à [hann maristes](location)
+    - Je veux acheter des médicaments à [maristes](location)
+    - Je veux acheter des médicaments à [point e](location)
+    - Je veux acheter des médicaments à [sacre coeur](location)
+    - Je veux acheter des médicaments à [parcelles assainies](location)
+    - Je veux acheter des médicaments à [keur massar](location)
+    - Je veux acheter des médicaments à [patte d'oie](location)
+    - Je veux acheter des médicaments à [front de terre](location)
+    - Je veux acheter des médicaments à [vdn](location)
+    - Je veux acheter des médicaments à [dalifort](location)
+    - Je veux acheter des médicaments à [gueule tapee](location)
+    - Je veux acheter des médicaments à [technopole](location)
+    - pharmacie à [dakar](location)
+    - pharmacie à [rufisque](location)
+    - pharmacie à [yoff](location)
+    - pharmacie à [yeumbeul](location)
+    - pharmacie à [bourguiba](location)
+    - pharmacie à [liberte 5](location)
+    - pharmacie à [liberte 6](location)
+    - pharmacie à [ngor](location)
+    - pharmacie à [parcelles](location)
+    - pharmacie à [medina](location)
+    - pharmacie à [pasteur](location)
+    - pharmacie à [foire](location)
+    - pharmacie à [ouakam](location)
+    - pharmacie à [pikine](location)
+    - pharmacie à [sicap](location)
+    - pharmacie à [djambars](location)
+    - pharmacie à [corniche ouest](location)
+    - pharmacie à [grand yoff](location)
+    - pharmacie à [thiaroye](location)
+    - pharmacie à [colobane](location)
+    - pharmacie à [keur djaraf](location)
+    - pharmacie à [guediawaye](location)
+    - pharmacie à [mermoz](location)
+    - pharmacie à [gentina](location)
+    - pharmacie à [nord](location)
+    - pharmacie à [gorgui](location)
+    - pharmacie à [mamelles](location)
+    - pharmacie à [hann maristes](location)
+    - pharmacie à [maristes](location)
+    - pharmacie à [point e](location)
+    - pharmacie à [sacre coeur](location)
+    - pharmacie à [parcelles assainies](location)
+    - pharmacie à [keur massar](location)
+    - pharmacie à [patte d'oie](location)
+    - pharmacie à [front de terre](location)
+    - pharmacie à [vdn](location)
+    - pharmacie à [dalifort](location)
+    - pharmacie à [gueule tapee](location)
+    - pharmacie à [technopole](location)
+    - une pharmacie à [dakar](location)
+    - une pharmacie à [rufisque](location)
+    - une pharmacie à [yoff](location)
+    - une pharmacie à [yeumbeul](location)
+    - une pharmacie à [bourguiba](location)
+    - une pharmacie à [liberte 5](location)
+    - une pharmacie à [liberte 6](location)
+    - une pharmacie à [ngor](location)
+    - une pharmacie à [parcelles](location)
+    - une pharmacie à [medina](location)
+    - une pharmacie à [pasteur](location)
+    - une pharmacie à [foire](location)
+    - une pharmacie à [ouakam](location)
+    - une pharmacie à [pikine](location)
+    - une pharmacie à [sicap](location)
+    - une pharmacie à [djambars](location)
+    - une pharmacie à [corniche ouest](location)
+    - une pharmacie à [grand yoff](location)
+    - une pharmacie à [thiaroye](location)
+    - une pharmacie à [colobane](location)
+    - une pharmacie à [keur djaraf](location)
+    - une pharmacie à [guediawaye](location)
+    - une pharmacie à [mermoz](location)
+    - une pharmacie à [gentina](location)
+    - une pharmacie à [nord](location)
+    - une pharmacie à [gorgui](location)
+    - une pharmacie à [mamelles](location)
+    - une pharmacie à [hann maristes](location)
+    - une pharmacie à [maristes](location)
+    - une pharmacie à [point e](location)
+    - une pharmacie à [sacre coeur](location)
+    - une pharmacie à [parcelles assainies](location)
+    - une pharmacie à [keur massar](location)
+    - une pharmacie à [patte d'oie](location)
+    - une pharmacie à [front de terre](location)
+    - une pharmacie à [vdn](location)
+    - une pharmacie à [dalifort](location)
+    - une pharmacie à [gueule tapee](location)
+    - une pharmacie à [technopole](location)
+    - je cherche une pharmacie a [dakar](location)
+    - je cherche des medicaments a [ouakam](location)
+    - je cherche une trousse de secours
+    - je cherche des medicaments contre la toux je suis a [ouakam](location)
+    - je cherhche une pharmacie
+    - je cherche une pharmacie à [oukam](location)
+    - trousse de secours
+    - J’ai besoin d’un pharmacien
+    - Je cherche une pharmacie à [yoff](location)
+    - Je cherche une pharmacie
+    - Pharmacie
+    - Je cherche une pharmacie à [dakar](location)
+    - Je cherche une pharmacie a [dakar](location)
+    - Pharmacie zac [Mbao](location)
+    - Pharmacie à proximité de [ouakam](location)
+- intent: medecin
+  examples: |
+    - J'ai besoin d'un [dentiste](specialiste)
+    - J'aurai besoin d'un [dentiste](specialiste).
+    - Peux tu me donner le nom de quelques [dentistes](specialiste)?
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques [dentistes](specialiste).
+    - Quels sont vos [dentistes](specialiste)?
+    - Liste moi quelques [dentistes](specialiste).
+    - Où puis je trouver un [dentiste](specialiste)?
+    - Je veux des [dentistes](specialiste)
+    - Où trouver un [dentiste](specialiste)
+    - J'ai besoin d'un médecin
+    - J'aurai besoin d'un médecin.
+    - Peux tu me donner le nom de quelques médecins?
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques médecins.
+    - Quels sont vos médecins?
+    - Liste moi quelques médecins.
+    - Où puis je trouver un médecin?
+    - Je veux des médecins
+    - Où trouver un médecin
+    - J'ai besoin d'un medecin
+    - J'aurai besoin d'un medecin.
+    - Peux tu me donner le nom de quelques medecins?
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques medecins.
+    - Quels sont vos medecins?
+    - Liste moi quelques medecins.
+    - Où puis je trouver un medecin?
+    - Je veux des medecins
+    - Où trouver un medecin
+    - je cherche un medecin
+    - je cherche un medecin a [liberte 6](location)
+    - J'ai besoin d'un [ophtalmologue](specialiste)
+    - J'aurai besoin d'un [ophtalmologue](specialiste).
+    - Peux tu me donner le nom de quelques [ophtalmologues](specialiste)?
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques [ophtalmologues](specialiste).
+    - Quels sont vos [ophtalmologues](specialiste)?
+    - Liste moi quelques [ophtalmologues](specialiste).
+    - Où puis je trouver un [ophtalmologue](specialiste)?
+    - Je veux des [ophtalmologues](specialiste)
+    - Où trouver un spécialiste en [ophtalmologie](specialiste)
+    - Trouve moi un [ophtalmologue](specialiste)
+    - J'ai besoin d'un [gynécologue](specialiste)
+    - J'aurai besoin d'un [gynécologue](specialiste)
+    - Peux tu me donner le nom de quelques [gynécologues](specialiste)?
+    - Je veux le nom, l'adresse et le numéro de téléphones de quelques [gynécologues](specialiste).
+    - Quels sont vos [gynécologues](specialiste)?
+    - Liste moi quelques [gynécologues](specialiste).
+    - Où puis je trouver un [gynécologue](specialiste)?
+    - Je veux des [gynécologues](specialiste)
+    - Je veux un [gynécologue](specialiste)
+    - J'aurai besoin d'un [laboratoire](specialiste)?
+    - Où puis-je trouver un [laboratoire](specialiste)?
+    - J'ai besoin de voir un [laboratoire](specialiste).
+    - Où trouver un [laboratoire](specialiste)
+    - je veux un [laboratoire](specialiste) à
+    - J'aurai besoin d'un [labo](specialiste)?
+    - Où puis-je trouver un [labo](specialiste)?
+    - Où trouver un [labo](specialiste)
+    - [labo](specialiste) à
+    - J'aurai besoin d'un [cardiologue](specialiste)
+    - Où puis-je trouver un [cardiologue](specialiste)?
+    - J'ai besoin de voir un [cardiologue](specialiste).
+    - Où trouver un [cardiologue](specialiste)
+    - [cardiologue](specialiste) à
+    - je veux un [cardiologue](specialiste) à
+    - J'aurai besoin d'un [kinésithérapeute](specialiste)?
+    - Où puis-je trouverkeur  un [kinésithérapeute](specialiste)?
+    - J'ai besoin de voir un [kinésithérapeute](specialiste).
+    - Où trouver un [kinésithérapeute](specialiste)
+    - [kinésithérapeute](specialiste) à
+    - je veux un [kinésithérapeute](specialiste) à
+    - J'aurai besoin d'une [imagerie médicale](specialiste)?
+    - Où puis-je trouver un [radiologue](specialiste)?
+    - J'ai besoin de faire une [radio](specialiste).
+    - Où trouver une [imagerie médicale](specialiste)
+    - [radio](specialiste) à
+    - je veux faire une [radio](specialiste) à
+    - J'aurai besoin d'un [ORL](specialiste)?
+    - Où puis-je trouver un [ORL](specialiste)?
+    - J'ai besoin de voir un [ORL](specialiste).
+    - Où trouver un spécialiste en [ORL](specialiste)
+    - [ORL](specialiste) à
+    - je veux un [ORL](specialiste) à
+    - J'aurai besoin d'un [neurologue](specialiste)?
+    - Où puis-je trouver un [neurologue](specialiste)?
+    - J'ai besoin de voir un [neurologue](specialiste).
+    - Où trouver un spécialiste en [neurologie](specialiste)
+    - [neurologue](specialiste) à
+    - je veux un [neurologue](specialiste) à
+    - J'aurai besoin d'un [chirurgien orthopédique](specialiste)?
+    - Où puis-je trouver un [chirurgien orthopédique](specialiste)?
+    - J'ai besoin de voir un [chirurgien orthopédique](specialiste).
+    - Où trouver un [chirurgien orthopédique](specialiste)
+    - [chirurgien orthopédique](specialiste) à
+    - je veux un [chirurgien orthopédique](specialiste) à
+    - J'aurai besoin d'un [urologue](specialiste)?
+    - Où puis-je trouver un [urologue](specialiste)?
+    - J'ai besoin de voir un [urologue](specialiste).
+    - Où trouver un [urologue](specialiste)
+    - [urologue](specialiste) à
+    - je veux un [urologue](specialiste) à
+    - J'aurai besoin d'un [gastro-entérologue](specialiste)?
+    - Où puis-je trouver un [gastro-entérologue](specialiste)?
+    - J'ai besoin de voir un [gastro-entérologue](specialiste).
+    - Où trouver un [gastro-entérologue](specialiste)
+    - [gastro-entérologue](specialiste) à
+    - je veux un [gastro-entérologue](specialiste) à
+    - J'aurai besoin d'un [dermatologue](specialiste)?
+    - Où puis-je trouver un [dermatologue](specialiste)?
+    - J'ai besoin de voir un [dermatologue](specialiste).
+    - Où trouver un [dermatologue](specialiste)
+    - [dermatologue](specialiste) à
+    - je veux un [dermatologue](specialiste) à
+    - J'aurai besoin d'un [rhumatologue](specialiste)?
+    - Où puis-je trouver un [rhumatologue](specialiste)?
+    - J'ai besoin de voir un [rhumatologue](specialiste).
+    - Où trouver un [rhumatologue](specialiste)
+    - [rhumatologue](specialiste) à
+    - je veux un [rhumatologue](specialiste) à
+    - J'aurai besoin d'un [endocrinologue](specialiste)?
+    - Où puis-je trouver un [endocrinologue](specialiste)?
+    - J'ai besoin de voir un [endocrinologue](specialiste).
+    - Où trouver un [endocrinologue](specialiste)
+    - [endocrinologue](specialiste) à
+    - je veux un [endocrinologue](specialiste) à
+    - J'aurai besoin d'un [orthoptiste](specialiste)?
+    - Où puis-je trouver un [orthoptiste](specialiste)?
+    - J'ai besoin de voir un [orthoptiste](specialiste).
+    - Où trouver un [orthoptiste](specialiste)
+    - [orthoptiste](specialiste) à
+    - je veux un [orthoptiste](specialiste) à
+    - J'aurai besoin d'un [audioprothésiste](specialiste)?
+    - Où puis-je trouver un [audioprothésiste](specialiste)?
+    - J'ai besoin de voir un [audioprothésiste](specialiste).
+    - Où trouver un [audioprothésiste](specialiste)
+    - [audioprothésiste](specialiste) à
+    - je veux un [audioprothésiste](specialiste) à
+    - J'aurai besoin d'un [orthophoniste](specialiste)?
+    - Où puis-je trouver un [orthophoniste](specialiste)?
+    - J'ai besoin de voir un [orthophoniste](specialiste).
+    - Où trouver un [orthophoniste](specialiste)
+    - [orthophoniste](specialiste) à
+    - je veux un [orthophoniste](specialiste) à
+    - J'aurai besoin d'un [pédiatre](specialiste)?
+    - Où puis-je trouver un [pédiatre](specialiste)?
+    - J'ai besoin de voir un [pédiatre](specialiste).
+    - Où trouver un [pédiatre](specialiste)
+    - [pédiatre](specialiste) à
+    - je veux un [pédiatre](specialiste) à
+    - J'aurai besoin d'un [stomatologue](specialiste)?
+    - Où puis-je trouver un [stomatologue](specialiste)?
+    - J'ai besoin de voir un [stomatologue](specialiste).
+    - Où trouver un [stomatologue](specialiste)
+    - [stomatologue](specialiste) à
+    - je veux un [stomatologue](specialiste) à
+    - je veux un medecin
+    - dent
+    - j'ai mal aux dents
+    - carie
+    - curtage
+    - dentaire
+    - dentisterie
+    - gencive
+    - fraiser
+    - tartre
+    - prothese
+    - chirurgien-dentiste
+    - dentition
+    - détartrage
+    - arracher dent
+    - molaire
+    - brosser
+    - médecin
+    - medecin
+    - docteur
+    - infirmier
+    - sage femme
+    - consultation
+    - toubib
+    - praticien
+    - maladie
+    - doctoresse
+    - pathologie
+    - remede
+    - soigner
+    - therapeutique
+    - diagnostiquer
+    - examen
+    - symptome
+    - medecin traitant
+    - soin intensif
+    - vaccination
+    - pronostic
+    - intervention
+    - cure
+    - depistage
+    - cabinet medical
+    - rechute
+    - toux
+    - ausculter
+    - diete
+    - medecin famille
+    - vaccin
+    - vacciner
+    - angine
+    - sos medecin
+    - guerisseur
+    - plaie
+    - inflammatoire
+    - transfusion sanguine
+    - examiner
+    - myopie
+    - hypermétropie
+    - ophtalmo
+    - presbytie
+    - opticien
+    - yeux
+    - oeil
+    - cataracte
+    - lunettes
+    - lentilles
+    - correcteur
+    - correction
+    - oculaire
+    - visuelle
+    - vision
+    - aveugle
+    - flou
+    - retine
+    - ophtalmologiste
+    - oculiste
+    - astigmate
+    - cornee
+    - glaucome
+    - cecite
+    - clignement
+    - vue
+    - conjonctive
+    - nerf optique
+    - glande lacrymale
+    - orgelet
+    - globe oculaire
+    - verres contact
+    - gynéco
+    - enceinte
+    - grossesse
+    - gestation
+    - maternité
+    - accouchement
+    - contraception
+    - menopause
+    - hormonal
+    - frottis vaginal
+    - echographie
+    - gemellaire
+    - prenatal
+    - labo
+    - analyse médicale
+    - labo analyse
+    - analyse sanguine
+    - analyse biochimique
+    - analyse biologique
+    - analyse scientifique
+    - echantillon
+    - analyse moleculaire
+    - analyse microscopique
+    - prelevement sanguin
+    - coeur
+    - cardio
+    - cardiaque
+    - ecg
+    - électrocardiogrammme
+    - cardio-chirurgien
+    - palpitations
+    - tachycardie
+    - cardiovasculaire
+    - bradycardie
+    - transplantation coeur
+    - crise cardiaque
+    - arret cardiaque
+    - rythme cardiaque
+    - hypertension
+    - insuffisance cardiaque
+    - essouflement
+    - ralentissement coeur
+    - arret coeur
+    - paralysie cardiaque
+    - infarctus myocarde
+    - kinesitherapie
+    - masseur
+    - masser
+    - reeducation motrice
+    - kinesi
+    - kine
+    - kinesitherapeutique
+    - seance massage
+    - physiotherapie
+    - gymnastique medicale
+    - renforcement musculaire
+    - therapeute
+    - irm
+    - scanner
+    - rayon x
+    - radio
+    - radiologue
+    - radiotherapie
+    - tomographie
+    - imagerie
+    - biopsie
+    - oreille
+    - nez
+    - gorge
+    - sinusite
+    - otite
+    - amygdale
+    - auditive
+    - audition
+    - surdite
+    - ouie
+    - allergie
+    - nerf
+    - cerveau
+    - epilepsie
+    - neurologie
+    - nevrose
+    - nevralgie
+    - hysterique
+    - nerveux
+    - sciatique
+    - neurone
+    - cerebrale
+    - dispensaire
+    - infirmerie
+    - aide-soignant
+    - salle attente
+    - chirurgien orthopédique
+    - orthopédiste
+    - orthopedie
+    - fracture
+    - appareil locomoteur
+    - deformation
+    - malformation
+    - muscle
+    - tendon
+    - ligament
+    - urologie
+    - urinaire
+    - urines
+    - néphrologue
+    - urinothérapeute
+    - gastro-entérologue
+    - gastro entérologue
+    - appareil digestif
+    - mal digestif
+    - ballonnements
+    - brûlures estomac
+    - coliques
+    - colite
+    - calculs billinaires
+    - calculs biliaires
+    - peau
+    - irritation
+    - dermato
+    - derme
+    - acnée
+    - lesion
+    - cutanee
+    - bouton
+    - cicatrice
+    - cortisone
+    - eczema
+    - rougeur
+    - dermatite
+    - démangeaison
+    - eczema contact
+    - dos
+    - articulation
+    - rhumatisme
+    - arthrose
+    - arthrite
+    - rhumato
+    - endocrine
+    - audioprothésiste
+    - audioprothèse
+    - prothèse auditive
+    - pédiatrie
+    - enfant fièvre
+    - nourisson
+    - bouche
+    - buccal
+    - je cherche un [dentiste](specialiste)
+    - Y’a t il des postes de santé aux alentours?
+    - Je cherche un médecin
+    - gériatrie
+    - Besoin d'un médecin à [pikine](location)
+    - Un [ophtalmologiste](specialiste)
+    - Un [cardiologue](specialiste) à [mermoz](location)
+    - [Pédiatre](specialiste)
+    - Un [cardiologue](specialiste) à [fann](location)
+    - Un [cardiologue](specialiste) à dakar
+    - Un [cardiologue](specialiste) à [Saint Louis](location)
+    - Un [généraliste](medecin)
+    - Médecin près de [mermoz](location)
+- intent: Salutations
+  examples: |
+    - Bonjour
+    - /start
+    - demarrer
+    - bjr
+    - Bonsoir
+    - Salut
+    - Mes salutations
+    - Hello
+    - ça va
+    - ça va ?
+    - comment ça va
+    - comment ça va ?
+    - hey
+    - hi
+    - good morning
+    - good evening
+    - hey there
+    - Salut bot
+    - Hey bot
+    - bonjour à nouveau
+    - Bonjour à tous
+    - Bonjour Monsieur
+    - Salut, mon pote !
+    - bonjour, il y a quelqu'un
+    - bonjour robot
+    - hallo
+    - heeey
+    - yo
+    - hola
+    - bonjour ami
+    - hi again
+    - hi folks
+    - hi Mister
+    - hi pal!
+    - hi there
+    - greetings
+    - hello everybody
+    - hello is anybody there
+    - hello robot
+    - hello there
+    - hello friend
+    - hello
+    - bonjour
+    - Hi
+- intent: Remerciement
+  examples: |
+    - Merci
+    - Grand merci
+    - remercie
+    - Très content merci
+    - Merci beaucoup
+    - ok merci
+    - you rock
+    - thank you
+    - okay thank you
+    - thanks goodbye
+    - thank you noise
+    - thanks
+    - thanks!
+    - thanks a lot
+    - great thanks
+    - appreciate it
+    - cool thanks
+    - Ok merci
+- intent: chitchat/bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+    - you are a bot right
+    - aren't you a bot
+    - es tu un bot?
+    - es tu un humain?
+    - est ce que je parles à un bot?
+    - est ce que je parles à un humain?
+    - pouvez-vous me faire part de votre patron ?
+    - je veux connaître votre patron
+    - je veux connaître la société qui vous a conçu
+    - je veux connaître la société qui vous a généré
+    - je veux connaître la société qui vous a inventé
+    - je veux savoir qui vous a inventé
+    - Puis-je demander qui vous a inventé ?
+    - Veuillez me dire quelle est la société qui vous a créé
+    - dites-moi qui vous a créé
+    - en savoir plus sur vos créateurs
+    - en savoir plus sur vos fondateurs
+- intent: chitchat/ask_name
+  examples: |
+    - quel est ton nom ?
+    - comment t'appelles tu ?
+    - a qui est ce que je parle ?
+    - qui est là ?
+    - qui est tu ?
+    - comment est ce que vous vous appelez ?
+    - comment vais je vous appelez ?
+    - comment vous nommez vous ?
+    - votre nom c'est quoi ?
+    - votre nom c'est comment ?
+    - votre nom svp
+    - nom svp ?
+    - votre nom?
+- intent: chitchat/how_are_you
+  examples: |
+    - Tu vas bien ?
+    - vous passez une bonne journée
+    - Est-ce que ça va ?
+    - Vous vous sentez bien ?
+    - comment vont les choses
+    - comment ça se passe pour vous ?
+    - Comment vont les choses ?
+    - comment allez-vous
+    - comment vas tu ?
+    - comment vas tu
+    - Bonjour comment vas tu  ?
+    - comment tu vas
+    - bonjour comment tu vas ?
+    - comment tu vas ?
+    - comment allez-vous ce matin
+    - comment vous sentez-vous
+    - comment allez-vous aujourd'hui
+    - Comment allez-vous ?
+    - hi Comment allez-vous
+    - bonjour Comment allez-vous
+- intent: role
+  examples:
+  - text: |
+      aide
+  - text: |
+      aidez moi
+  - text: |
+      que peux tu faire?
+  - text: |
+      quel est ton role?
+  - text: |
+      tu sais faire quoi?
+  - text: |
+      dis moi ce que tu sais faire
+  - text: |
+      quel est ton métier ?
+  - text: |
+      tu sers à quoi ?
+  - text: |
+      En quoi est ce que tu peux m'aider ?
+  - text: |
+      quel est ton domaine métier ?
+  - text: |
+      à quoi bon peux tu servir ?
+  - text: |
+      que sais tu faire
+  - text: |
+      I need help
+  - text: |
+      j'ai besoin d'aide
+  - text: |
+      peut tu m'aider
+  - text: |
+      j'ai besoin d'un peu d'aide
+  - text: |
+      pouvez vous m'aider svp
+  - text: |
+      pouvez vous m'aider s'il vous plait
+  - text: |
+      aider moi svp
+  - text: |
+      aider moi s'il vous plait
+  - text: |
+      what can you help me with
+  - text: |
+      can you help me
+  - text: |
+      what can you do
+  - text: |
+      I need some help
+  - text: |
+      help me
+  - text: |
+      can you please help me
+  - text: |
+      Que sais tu faire
+      ?
+  - text: |
+      Help
+- intent: inform
+  examples: |
+    - [almadies](location)
+    - [bourguiba](location)
+    - [camberene](location)
+    - [castor](location)
+    - [cipres](location)
+    - [cite keur gorgui](location)
+    - [colobane](location)
+    - [dakar](location)
+    - [diamniadio](location)
+    - [diourbel](location)
+    - [fann](location)
+    - [fass](location)
+    - [fatick](location)
+    - [foire](location)
+    - [golf](location)
+    - [grand yoff](location)
+    - [guediawaye](location)
+    - [gueule tapee](location)
+    - [hann maristes](location)
+    - [hlm](location)
+    - [kaffrine](location)
+    - [kaolack](location)
+    - [kedouguou](location)
+    - [keur massar](location)
+    - [kolda](location)
+    - [liberte 5](location)
+    - [liberte 6](location)
+    - [louga](location)
+    - [malika](location)
+    - [mamelles](location)
+    - [maristes](location)
+    - [matam](location)
+    - [mbao](location)
+    - [mbour](location)
+    - [medina](location)
+    - [mermoz](location)
+    - [ndioum](location)
+    - [ngor](location)
+    - [ouakam](location)
+    - [ouest foire](location)
+    - [ourossogui](location)
+    - [parcelles assainies](location)
+    - [patte d'oie](location)
+    - [pikine](location)
+    - [point e](location)
+    - [richard toll](location)
+    - [rufisque](location)
+    - [sacre coeur](location)
+    - [sahm](location)
+    - [saint louis](location)
+    - [saly](location)
+    - [scat urbam](location)
+    - [sedhiou](location)
+    - [sicap](location)
+    - [sicap mbao](location)
+    - [sipress](location)
+    - [soprim](location)
+    - [soumbedioune](location)
+    - [tambacounda](location)
+    - [thiaroye](location)
+    - [thies](location)
+    - [tivaoune](location)
+    - [touba](location)
+    - [vdn](location)
+    - [yeumbeul](location)
+    - [yoff](location)
+    - [ziguinchor](location)
+    - [technopole](location)
+    - [généraliste](medecin)
+    - [generaliste](medecin)
+    - [specialiste](medecin)
+    - [spécialiste](medecin)
+    - [Généraliste](medecin)
+    - [Generaliste](medecin)
+    - [Specialiste](medecin)
+    - [Spécialiste](medecin)
+    - [dentiste](specialiste)
+    - [ophtalmologue](specialiste)
+    - [gynecologue](specialiste)
+    - [laboratoire](specialiste)
+    - [cardiologue](specialiste)
+    - [kinesitherapeute](specialiste)
+    - [imagerie medicale](specialiste)
+    - [ORL](specialiste)
+    - [neurologue](specialiste)
+    - [chirurgien orthopedique](specialiste)
+    - [urologue](specialiste)
+    - [gastro-enterologue](specialiste)
+    - [dermatologue](specialiste)
+    - [rhumatologue](specialiste)
+    - [endocrinologue](specialiste)
+    - [orthoptiste](specialiste)
+    - [audioprothesiste](specialiste)
+    - [pediatre](specialiste)
+    - [stomatologue](specialiste)
+    - [speialiste](medecin)
+    - [Mamelles](location)
+    - [Ophtalmologue](specialiste)
+    - [Almadies](location)
+    - [Dakar](location)
+    - [Ouakam](location)
+    - Cité [keur gorgui](location)
+    - [Pikine](location)
+- intent: goodbye
+  examples: |
+    - bye
+    - good bye
+    - ciao
+    - see you
+    - see ya
+    - A bientôt
+    - Au revoir
+    - Merci infos
+    - merci au revoir
+    - ok cool au revoir merci
+    - ok merci au revoir
+    - tu es génial
+    - et c'est tout, merci et au revoir
+    - merci et au revoir
+    - désolé pour mes erreurs merci au revoir
+    - euh merci au revoir
+    - ah merci au revoir
+    - euh ok merci au revoir
+    - goodbye
+    - see you around
+    - see you later
+    - um thank you good bye
+    - okay cool uh good bye thank you
+    - okay thank you good bye
+    - and thats all thank you and good bye
+    - thank you and good bye
+    - sorry about my mistakes thank you good bye
+    - noise thank you good bye
+    - okay thank you goodbye
+    - uh thank you good bye
+    - breath thank you goodbye
+    - ah thank you goodbye
+    - thank you good bye
+    - breath thank you very much goodbye
+    - unintelligible thank you goodbye
+    - uh okay thank you good bye
+    - thank you bye
+    - um okay thank you good bye
+- intent: urgence
+  examples: |
+    - ambulance
+    - urgence
+    - medecin urgentiste
+    - J'aurai besoin d'une ambulance ?
+    - Hello, J'aurai besoin d'un ambulance ?
+    - Où puis-je trouver un medecin urgentiste ?
+    - Où puis-je trouver un medecin urgentiste ?
+    - Recommander moi un urgentiste à [Dakar](location)
+    - Bonjour, il sagit d'une urgence 
+    - Hello, j'ai une urgence 
+    - Où peut t'on évacuer notre malade en urgence 
+    - urgence à [cite keur gorgui](location)
+- intent: hopital
+  examples: |
+    - J'aurai besoin d'un hôpital ?
+    - Hello, J'aurai besoin d'un hôpital ?
+    - Où puis-je trouver un hopital ?
+    - Où puis-je trouver un hosto ?
+    - Recommander moi un hôpital 
+    - Bonjour, Où trouver un hôpital 
+    - Où trouver un hôpital 
+    - hôpital à
+    - hosto
+    - hopital
+    - hopital à [Dakar](location)
+    - je veux un hôpital à [Ouakam](location)
+- intent: clinique
+  examples: |
+    - hospitalisation dans une clinque
+    - je cherche une clinique ou me faire hospitaliser
+    - je cherche une cliqnique privée
+    - Salut, ou puis je trouver une clinique ? 
+    - clinique
+    - clinique à [sacré coeur](location)
+    - J'aurai besoin d'une clinique?
+    - Où puis-je trouver une clinique?
+    - J'ai besoin de voir une clinique.
+    - Où trouver une clinique
+    - clinique à
+    - je veux une clinique à [mermoz](location)
+- intent: stop
+  examples: |
+    - ok alors vous ne pouvez pas m'aider
+    - c'était de la merde, tu n'aides pas
+    - vous ne pouvez pas m'aider
+    - vous ne pouvez pas m'aider avec ce dont j'ai besoin
+    - Je suppose que vous ne pouvez pas m'aider alors
+    - Ok, je suppose que vous ne pouvez pas m'aider
+    - ce n'est pas ce que je veux
+    - ok, mais cela ne m'aide pas
+    - cela ne mène à rien
+    - cette conversation n'est pas vraiment utile
+    - vous ne pouvez pas m'aider avec ce que je veux
+    - Je pense que vous ne pouvez pas m'aider
+    - hm je ne pense pas que vous puissiez faire ce que je veux
+    - stop
+    - stop go back
+    - vous obtenez quelque chose ?
+    - et vous vous appelez bot company ? pff
+    - et c'est tout ?
+    - rien d'autre ?
+    - je veux annuler
+    - c'est bon j'arrete
+    - tu peux arreter ?
+    - annule
+    - arrete
+    - arreter
+    - je veux rechercher autre chose
+    - changement de plan
+    - changement de programme
+    - ok then you cant help me
+    - that was shit, you're not helping
+    - you can't help me
+    - you can't help me with what i need
+    - i guess you can't help me then
+    - ok i guess you can't help me
+    - that's not what i want
+    - ok, but that doesnt help me
+    - this is leading to nothing
+    - this conversation is not really helpful
+    - you cannot help me with what I want
+    - I think you cant help me
+    - hm i don't think you can do what i want
+    - do you get anything?
+    - and you call yourself bot company? pff
+    - and that's it?
+    - nothing else?
+- intent: affirm
+  examples: |
+    - euh oui
+    - faisons le
+    - oui
+    - um oui
+    - c'est exact
+    - oui oui
+    - correct
+    - uh yes
+    - let's do it
+    - yeah
+    - um yes
+    - that's correct
+    - yes yes
+    - right
+    - yea
+    - yes
+    - yes right
+    - yes and i dont care
+    - right on
+    - i love that
+    - Oui
+- intent: deny
+  examples: |
+    - non
+    - non pas ca
+    - non merci
+    - euh non
+    - avez-vous autre chose
+    - non, cela ne fonctionne pas pour moi
+    - no
+    - no new selection
+    - no thanks
+    - no thank you
+    - uh no
+    - do you have something else
+    - no this does not work for me
+- intent: out_of_scope
+  examples: |
+    - Quel temps fait-il aujourd'hui ?
+    - Quel temps fait-il ?
+    - Quel temps fait-il chez vous ?
+    - Faites-vous du beau temps ?
+    - Pleut-il ?
+    - Comment est-ce que c'est dehors ?
+    - Fait-il chaud ou froid ?
+    - Il fait beau, n'est-ce pas ?
+    - Quelles sont les prévisions météorologiques ?
+    - Y a-t-il de la brise dehors ?
+    - what is the square root of 5
+    - I want to know the weather
+    - what is the meaning of life.
+    - Fridge Isn't Running
+    - my tv isn't working
+    - I want a pizza
+    - my washing machine isn't working
+    - what year is it
+    - order a pizza
+    - I want to order a pizza
+    - what is the weather today
+    - what is the weather
