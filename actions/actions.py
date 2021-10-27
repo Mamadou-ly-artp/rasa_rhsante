@@ -124,6 +124,29 @@ def _find_facilities_medecin(location: Text, medecin: Text) -> Text:
                     )
         return message  
 
+def get_latest_event(events):
+    latest_actions = []
+    for e in events:
+        if e['event'] == 'action':
+            latest_actions.append(e)
+
+    return latest_actions[-4:][0]['name']
+
+
+class ActionStoreIntentMessage(Action):
+    """Stores the bot use case in a slot"""
+
+    def name(self):
+        return "action_store_intent_message"
+
+    def run(self, dispatcher, tracker, domain):
+
+        # we grab the whole user utterance here as there are no real entities
+        # in the use case
+        message = tracker.latest_message['intent'].get('name')
+
+        return [SlotSet('intent_message', message)]
+
 class ActionSearching(Action):
 
     def name(self) -> Text:
@@ -198,6 +221,59 @@ class ActionPharmacieSearching(Action):
         # dispatcher.utter_message(text=results)
 
         return [SlotSet("location", None)]
+
+
+
+#Class for form hospitalisation validation
+
+class ValidateHospitalisationForm(FormValidationAction):
+    """Example of a form validation action."""
+
+    def name(self) -> Text:
+        return "validate_hospitalisation_form"
+
+    def validate_location(
+        self,
+        value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> Dict[Text, Any]:
+        """Validate location value."""
+
+        if value.lower() in indiqueLieu(value.lower()):
+            return {"location": value}
+        else:
+            print("not loc")
+            dispatcher.utter_message("Mauvaise localisation")
+            # validation failed, set this slot to None, meaning the
+            # user will be asked for the slot again
+            return {"location": None}
+
+#Class for form hospitalisation actions
+
+class ActionHospitalisationSearching(Action):
+
+    def name(self) -> Text:
+        return "action_hospitalisation_searching"
+
+    async def run(
+        self, dispatcher, tracker: Tracker, domain: Dict[Text,Any]
+    ) -> List[Dict[Text,Any]]:
+                
+        results = ""
+        intent = tracker.get_slot('intent_message')
+        location = tracker.get_slot('location')
+
+        if intent is None:
+            results = "Désolé une erreur s'est produite. Veuillez verifier vos informations"
+        else:
+            results = _find_facilities_medecin(location.lower(),intent)
+
+        dispatcher.utter_message(text=results)
+        # dispatcher.utter_message(text=results)
+
+        return [SlotSet("intent_message", None),SlotSet("location", None)]
   
   
 #Class for medecin form validation
