@@ -27,6 +27,12 @@ intents:
     use_entities: true
 - chitchat:
     use_entities: true
+- urgence:
+    use_entities: true
+- clinique:
+    use_entities: true
+- hopital:
+    use_entities: true
 - affirm:
     use_entities: true
 - deny:
@@ -39,6 +45,11 @@ entities:
 - specialiste
 slots:
   location:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  intent_message:
     type: rasa.shared.core.slots.TextSlot
     initial_value: null
     auto_fill: true
@@ -155,6 +166,8 @@ actions:
 - action_medecin_searching
 - action_pharmacie_searching
 - action_searching
+- action_store_intent_message
+- action_hospitalisation_searching
 - utter_ask_location
 - utter_bot_role
 - utter_ask_medecin_slot
@@ -213,4 +226,19 @@ forms:
         - inform
         - Pharmacies
         type: from_entity
-e2e_actions: []
+  hospitalisation_form:
+    ignored_intents:
+    - bot_challenge
+    - Salutations
+    - Remerciement
+    - chitchat
+    required_slots:
+      location:
+      - entity: location
+        intent:
+        - inform
+        - hopital
+        - clinique
+        - urgence
+        type: from_entity
+e2e_actions: [] 
