@@ -570,12 +570,6 @@ nlu:
     - Où puis je trouver un [gynécologue](specialiste)?
     - Je veux des [gynécologues](specialiste)
     - Je veux un [gynécologue](specialiste)
-    - J'aurai besoin d'une [clinique](medecin)?
-    - Où puis-je trouver une [clinique](medecin)?
-    - J'ai besoin de voir une [clinique](medecin).
-    - Où trouver une [clinique](medecin)
-    - [clinique](medecin) à
-    - je veux une [clinique](medecin) à
     - J'aurai besoin d'un [laboratoire](specialiste)?
     - Où puis-je trouver un [laboratoire](specialiste)?
     - J'ai besoin de voir un [laboratoire](specialiste).
@@ -615,14 +609,6 @@ nlu:
     - Où trouver un spécialiste en [neurologie](specialiste)
     - [neurologue](specialiste) à
     - je veux un [neurologue](specialiste) à
-    - J'aurai besoin d'un [hôpital](medecin)?
-    - Où puis-je trouver un [hopital](medecin)?
-    - Où puis-je trouver un [hosto](medecin)?
-    - Recommander moi un [hôpital](medecin)
-    - Où trouver un [hôpital](medecin)
-    - [hôpital](medecin) à
-    - [hopital](medecin) à
-    - je veux un [hôpital](medecin) à
     - J'aurai besoin d'un [chirurgien orthopédique](specialiste)?
     - Où puis-je trouver un [chirurgien orthopédique](specialiste)?
     - J'ai besoin de voir un [chirurgien orthopédique](specialiste).
@@ -719,7 +705,6 @@ nlu:
     - pathologie
     - remede
     - soigner
-    - urgence
     - therapeutique
     - diagnostiquer
     - examen
@@ -746,7 +731,6 @@ nlu:
     - inflammatoire
     - transfusion sanguine
     - examiner
-    - medecin urgentiste
     - myopie
     - hypermétropie
     - ophtalmo
@@ -867,13 +851,10 @@ nlu:
     - sciatique
     - neurone
     - cerebrale
-    - hosto
     - dispensaire
     - infirmerie
     - aide-soignant
     - salle attente
-    - hospitalisation
-    - ambulance
     - chirurgien orthopédique
     - orthopédiste
     - orthopedie
@@ -1208,14 +1189,12 @@ nlu:
     - [dentiste](specialiste)
     - [ophtalmologue](specialiste)
     - [gynecologue](specialiste)
-    - [clinique](medecin)
     - [laboratoire](specialiste)
     - [cardiologue](specialiste)
     - [kinesitherapeute](specialiste)
     - [imagerie medicale](specialiste)
     - [ORL](specialiste)
     - [neurologue](specialiste)
-    - [hopital](medecin)
     - [chirurgien orthopedique](specialiste)
     - [urologue](specialiste)
     - [gastro-enterologue](specialiste)
@@ -1274,6 +1253,48 @@ nlu:
     - uh okay thank you good bye
     - thank you bye
     - um okay thank you good bye
+- intent: urgence
+  examples: |
+    - ambulance
+    - urgence
+    - medecin urgentiste
+    - J'aurai besoin d'une ambulance ?
+    - Hello, J'aurai besoin d'un ambulance ?
+    - Où puis-je trouver un medecin urgentiste ?
+    - Où puis-je trouver un medecin urgentiste ?
+    - Recommander moi un urgentiste à [Dakar](location)
+    - Bonjour, il sagit d'une urgence 
+    - Hello, j'ai une urgence 
+    - Où peut t'on évacuer notre malade en urgence 
+    - urgence à [cite keur gorgui](location)
+- intent: hopital
+  examples: |
+    - J'aurai besoin d'un hôpital ?
+    - Hello, J'aurai besoin d'un hôpital ?
+    - Où puis-je trouver un hopital ?
+    - Où puis-je trouver un hosto ?
+    - Recommander moi un hôpital 
+    - Bonjour, Où trouver un hôpital 
+    - Où trouver un hôpital 
+    - hôpital à
+    - hosto
+    - hopital
+    - hopital à [Dakar](location)
+    - je veux un hôpital à [Ouakam](location)
+- intent: clinique
+  examples: |
+    - hospitalisation dans une clinque
+    - je cherche une clinique ou me faire hospitaliser
+    - je cherche une cliqnique privée
+    - Salut, ou puis je trouver une clinique ? 
+    - clinique
+    - clinique à [sacré coeur](location)
+    - J'aurai besoin d'une clinique?
+    - Où puis-je trouver une clinique?
+    - J'ai besoin de voir une clinique.
+    - Où trouver une clinique
+    - clinique à
+    - je veux une clinique à [mermoz](location)
 - intent: stop
   examples: |
     - ok alors vous ne pouvez pas m'aider

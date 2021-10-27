@@ -13,6 +13,30 @@ stories:
   - action: utter_thanks
   - intent: goodbye
   - action: utter_bye
+- story: search hospital hapy path form
+  steps:
+  - intent: hopital
+  - action: action_store_intent_message
+  - action: hospitalisation_form
+  - active_loop: hospitalisation_form
+  - active_loop: null
+  - action: action_hospitalisation_searching
+- story: search clinique hapy path form
+  steps:
+  - intent: clinique
+  - action: action_store_intent_message
+  - action: hospitalisation_form
+  - active_loop: hospitalisation_form
+  - active_loop: null
+  - action: action_hospitalisation_searching
+- story: search urgence hapy path form
+  steps:
+  - intent: urgence
+  - action: action_store_intent_message
+  - action: hospitalisation_form
+  - active_loop: hospitalisation_form
+  - active_loop: null
+  - action: action_hospitalisation_searching
 - story: search Pharmacies hapy path form
   steps:
   - intent: Pharmacies
