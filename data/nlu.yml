@@ -923,6 +923,7 @@ nlu:
     - Un [cardiologue](specialiste) à [Saint Louis](location)
     - Un [généraliste](medecin)
     - Médecin près de [mermoz](location)
+    - Médecin
 - intent: Salutations
   examples: |
     - Bonjour
@@ -1261,11 +1262,10 @@ nlu:
     - J'aurai besoin d'une ambulance ?
     - Hello, J'aurai besoin d'un ambulance ?
     - Où puis-je trouver un medecin urgentiste ?
-    - Où puis-je trouver un medecin urgentiste ?
     - Recommander moi un urgentiste à [Dakar](location)
-    - Bonjour, il sagit d'une urgence 
-    - Hello, j'ai une urgence 
-    - Où peut t'on évacuer notre malade en urgence 
+    - Bonjour, il sagit d'une urgence
+    - Hello, j'ai une urgence
+    - Où peut t'on évacuer notre malade en urgence
     - urgence à [cite keur gorgui](location)
 - intent: hopital
   examples: |
@@ -1273,9 +1273,9 @@ nlu:
     - Hello, J'aurai besoin d'un hôpital ?
     - Où puis-je trouver un hopital ?
     - Où puis-je trouver un hosto ?
-    - Recommander moi un hôpital 
-    - Bonjour, Où trouver un hôpital 
-    - Où trouver un hôpital 
+    - Recommander moi un hôpital
+    - Bonjour, Où trouver un hôpital
+    - Où trouver un hôpital
     - hôpital à
     - hosto
     - hopital
@@ -1286,7 +1286,7 @@ nlu:
     - hospitalisation dans une clinque
     - je cherche une clinique ou me faire hospitaliser
     - je cherche une cliqnique privée
-    - Salut, ou puis je trouver une clinique ? 
+    - Salut, ou puis je trouver une clinique ?
     - clinique
     - clinique à [sacré coeur](location)
     - J'aurai besoin d'une clinique?
