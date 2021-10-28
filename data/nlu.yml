@@ -1254,9 +1254,10 @@ nlu:
     - uh okay thank you good bye
     - thank you bye
     - um okay thank you good bye
-- intent: urgence
+- intent: ambulance
   examples: |
     - ambulance
+    - urgence
     - urgence
     - medecin urgentiste
     - J'aurai besoin d'une ambulance ?
