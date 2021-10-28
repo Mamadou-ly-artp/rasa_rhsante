@@ -924,6 +924,8 @@ nlu:
     - Un [généraliste](medecin)
     - Médecin près de [mermoz](location)
     - Médecin
+    - Medcin [spécialiste](medecin)
+    - Medcin
 - intent: Salutations
   examples: |
     - Bonjour
@@ -1214,6 +1216,10 @@ nlu:
     - [Ouakam](location)
     - Cité [keur gorgui](location)
     - [Pikine](location)
+    - [keur gorgui](location)
+    - cité [keur gorgui](location)
+    - [Sacre coeur](location)
+    - [mamelle](location)
 - intent: goodbye
   examples: |
     - bye
@@ -1267,6 +1273,9 @@ nlu:
     - Hello, j'ai une urgence
     - Où peut t'on évacuer notre malade en urgence
     - urgence à [cite keur gorgui](location)
+    - urgences
+    - j'ai besoin d'aller aux urgences
+    - je cherche une ambulance
 - intent: hopital
   examples: |
     - J'aurai besoin d'un hôpital ?
@@ -1281,6 +1290,8 @@ nlu:
     - hopital
     - hopital à [Dakar](location)
     - je veux un hôpital à [Ouakam](location)
+    - hello je cherche un hopital
+    - je cherche un hopital
 - intent: clinique
   examples: |
     - hospitalisation dans une clinque
@@ -1295,6 +1306,7 @@ nlu:
     - Où trouver une clinique
     - clinique à
     - je veux une clinique à [mermoz](location)
+    - je cherche ue clinique
 - intent: stop
   examples: |
     - ok alors vous ne pouvez pas m'aider
