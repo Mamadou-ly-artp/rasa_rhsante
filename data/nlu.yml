@@ -1,4 +1,4 @@
-version: "2.0"
+version: "3.0"
 nlu:
 - intent: Pharmacies
   examples: |
@@ -1111,8 +1111,14 @@ nlu:
       ?
   - text: |
       Help
+- regex: location
+  examples: |
+    - ((\{\"lng\":)(\-?|\+?)?\d+(\.\d+)?),\s*((\{?\"lat\":)(\-?|\+?)?\d+(\.\d+)?)\}
 - intent: inform
   examples: |
+    - here is my loc [{"lng":-10.123804, "lat":18.45626}](location)
+    - [{"lng":-11.658804, "lat":14.45226}](location)
+    - loc : [{"lng":-18.875804, "lat":12.96326}](location)  
     - [almadies](location)
     - [bourguiba](location)
     - [camberene](location)
