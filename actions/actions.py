@@ -5,11 +5,7 @@
 # https://rasa.com/docs/rasa/core/actions/#custom-actions/
 
 # pylint: disable=import-error
-#from dbConnect import getData
-# # write the sql query here.
-# query = "select * from customer"
-## pass the sql query to the getData method and store the results in `data` variable.
-# data = getData(query)
+
 
 # This is a simple example for a custom action which utters "Hello World!"
 
@@ -20,20 +16,11 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet, AllSlotsReset, EventType
 from rasa_sdk.forms import FormValidationAction
-from actions.dbConnect import getData #pylint: disable=import-error
-# # write the sql query here.
-# query = "select * from specialites"
-# ## pass the sql query to the getData method and store the results in `data` variable.
-# data = getData(query)
-# print("the dataa######################")
-# print(data)
+from actions.dbConnect import getData,call_get_distance #pylint: disable=import-error
 
-import json
+import json,re
 import os
 import random
-
-with open('intents.json', mode="rt") as json_data:
-    data = json.load(json_data)
 
 
 #return a place from a sentence
@@ -55,30 +42,44 @@ def indiqueLieu(requete):
         return ["null"] 
 
 
-# def _ancienne_function_search_intent_in_file(location: Text) -> Text:
-#     """Returns object of pharma matching the search criteria."""
-#     for theint in data["intentions"]:
-#         if theint['tags'] == "Pharmacies":
-#             reponse = [choix['pharmacies']+" adr : "+choix['adresse']+" Tel : "+choix['telephone']+". " for choix in theint['responses'] if location.lower() in indiqueLieu(choix['adresse'].lower())]
-#             if len(reponse) != 0:
-#                 return "Je vous recommande " + reponse[random.choice(range(len(reponse)))]
-#             else:
-#                 return "Désolé mais nous n'avons pas de pharmacie partenaire dans cette zone. Essayez en une autre 😊"
+def hyperlink_payload(tracker, message, title, url):
+    return {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "button",
+                "text": message,
+                "buttons": [
+                    {
+                        "type": "web_url",
+                        "url": url,
+                        "title": title,
+                        "webview_height_ratio": "full",
+                    }
+                ],
+            },
+        }
+    }
 
-#     #return "Une erreur s'est produite, un de nos services ne réponds pas. Veuillez réessayer plus tard "
 
-#     """Returns object of doctor matching the search criteria."""
-#     if medecin is not None:
-#         medecin= medecin.lower()
-#     for theint in data["intentions"]:
-#         if theint['tags'] == medecin:
-#             reponse = [choix['docteur']+" adr : "+choix['adresse']+" Tel : "+choix['telephone']+". " for choix in theint['responses'] if location.lower() in indiqueLieu(choix['adresse'].lower())]
-#             if len(reponse) != 0:
-#                 return "Je vous recommande " + reponse[random.choice(range(len(reponse)))]
-#             else:
-#                 return "Désolé mais nous n'avons pas de "+ theint['tags'] +" partenaire dans cette zone. Essayez en une autre 😊"
-
-#     return "Une erreur s'est produite, un de nos services ne réponds pas. Veuillez réessayer plus tard"
+def _search_location_specialites(loctext: Text,pattern:bool):
+    """
+            Given location or specialites , we search in the bd of the id 
+            :param loctext: the data the text location or the specialites
+            :param pattern: the process to do 1 for loc 0 for specialite 
+            :return: list of elements or null
+    """
+    if pattern:
+        query = f'''SELECT id, nom, location, latitude, longitude from lieuxes where nom LIKE "%{loctext}%" '''
+    else :
+        query = f'''SELECT id, nom from specialites where nom LIKE "%{loctext}%" '''
+        
+    # ## pass the sql query to the getData method and store the results in `data` variable.
+    data = getData(query)
+    if len(data) == 0:
+        return "null"
+    else:  
+        return data[0] 
 
 def _search_bd(typeResponse: Text, localisation: Text)-> Text:
     # create the query for the database
@@ -93,36 +94,41 @@ def _search_bd(typeResponse: Text, localisation: Text)-> Text:
         return "null"
     else:        
         return data[random.choice(range(len(data)))]
+        
+
+def _format_responses(data: any,type: bool):
+    """
+            Given data and a type we extract (if the type is 1) the lat and lng from the slot
+            or we extract it from the databases responses (is the type is 0)
+            :param location: the data passed to process
+            :param kind: the process to use 1 for extraction 0 for formatting response 
+            :return: Dict of two slots
+            """
+    returndata = []
+    if type:
+        b = re.split('[":{},]',data)
+        returndata.extend([b[4],b[8]])
+    # else: 
+        # to continue include the dispatcher etc
+        # 0 : id
+        # 1 : nom
+        # 2 : adresse
+        # 3 : telephon
+        # 4 : emai
+        # 5 : disponibilite
+        # 6 : specialite 
+        # 7 : latitude
+        # 8 : longitude
+        # 9 : localisation
+
+        # for result in data:
+        #     print(result[0])
+        #     print(result[1])
+        #     print(result[2])
+        #     print(result[3])
     
-    
-def _find_facilities_pharmacie(location: Text) -> Text:
-    """Returns object of pharma matching the search criteria."""
+    return returndata
 
-    dataR= _search_bd("Pharmacies",location.lower())
-    if dataR == "null":
-        return "Désolé mais nous n'avons pas de pharmacie partenaire dans cette zone. Essayez en une autre 😊"
-    else:
-        message = (
-                        f"Je vous recommande : {dataR[1]} \n Adresse : {dataR[2]}\n"
-                        f"Telephone : {dataR[3]}.\n"
-                        f"Email: {'indisponible' if dataR[4] == 'null' else dataR[4]} \n"
-                    )
-        return message                
-
-
-def _find_facilities_medecin(location: Text, medecin: Text) -> Text:
-    """Returns object of doctor matching the search criteria."""
-
-    dataR= _search_bd(medecin,location.lower())
-    if dataR == "null":
-        return f"Désolé mais nous n'avons pas de {medecin} partenaire dans cette zone. Essayez en une autre 😊"
-    else:
-        message = (
-                        f"Je vous recommande : {dataR[1]} \n Adresse : {dataR[2]}\n"
-                        f"Telephone : {dataR[3]}.\n"
-                        f"Email: {'indisponible' if dataR[4] == 'null' else dataR[4]} \n"
-                    )
-        return message  
 
 def get_latest_event(events):
     latest_actions = []
@@ -132,6 +138,22 @@ def get_latest_event(events):
 
     return latest_actions[-4:][0]['name']
 
+class AskForLocationAction(Action):
+    def name(self) -> Text:
+        return "action_ask_location"
+
+    def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> List[EventType]:
+
+        reply_Markup = {"keyboard":[ [{ "text":"Appuyez pour envoyer votre localisation", "request_location":True }] ] , "one_time_keyboard":True }
+        jsonaa = {
+                "chat_id":tracker.current_state()['sender_id'],
+                "text":"Pouvez vous partagez avec nous votre localisation svp ? \n Vous pouvez soit écrire du texte ou appuyer sur le boutton ",
+                "reply_markup": json.dumps(reply_Markup)
+                }        
+        dispatcher.utter_message(json_message=jsonaa)
+        return []
 
 class ActionStoreIntentMessage(Action):
     """Stores the bot use case in a slot"""
@@ -180,29 +202,18 @@ class ValidatePharmacieForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         """Validate location value."""
 
-        if value.lower() in indiqueLieu(value.lower()):
+        # if value.lower() in indiqueLieu(value.lower()):
+
+        if re.search(r"((\{\"lng\":)(\-?|\+?)?\d+(\.\d+)?),\s*((\{?\"lat\":)(\-?|\+?)?\d+(\.\d+)?)\}", value.lower()) :
+            return {"location": value}
+        elif value.lower() in _search_location_specialites(value.lower(),True):
             return {"location": value}
         else:
-            print("not loc")
             dispatcher.utter_message("Mauvaise localisation")
             # validation failed, set this slot to None, meaning the
             # user will be asked for the slot again
             return {"location": None}
 
-    # async def run(
-    #     self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
-    # ) -> List[EventType]:
-    #     """ define which slot should be requested """
-
-    #     required_slots = ["location"]
-
-    #     for slot_name in required_slots:
-    #         if tracker.slots.get(slot_name) is None:
-    #             #not filled yet ask to fill this slot next
-    #             return[SlotSet("requested_slot",slot_name)]
-        
-    #     #All slot filled
-    #     return [SlotSet("requested_slot")]
 
 #Class for form pharmacie actions
 
@@ -215,11 +226,56 @@ class ActionPharmacieSearching(Action):
         self, dispatcher, tracker: Tracker, domain: Dict[Text,Any]
     ) -> List[Dict[Text,Any]]:
         
+        dispatcher.utter_message(text="Merci pour le partage, veuillez patienter un instant svp...")
         location = tracker.get_slot('location')
-        results = _find_facilities_pharmacie(location.lower())
-        dispatcher.utter_message(text=results)
-        # dispatcher.utter_message(text=results)
+        if re.search(r"((\{\"lng\":)(\-?|\+?)?\d+(\.\d+)?),\s*((\{?\"lat\":)(\-?|\+?)?\d+(\.\d+)?)\}", location.lower()) :
+            datatopass = _format_responses(location,True)
+            #We extract and pass the lat datatopass[1] and the long datatopass[0] to the function
+            a = call_get_distance(datatopass[1],datatopass[0],5,1)
+            if a:
+                for result in a:
+                    message = (
+                                f"Je vous recommande : {result[1]} \n Adresse : {result[2]}\n"
+                                f"Telephone : {result[3]}.\n"
+                                f"Email: {'indisponible' if result[4] == 'null' else result[4]} \n"
+                            )
+                    # dispatcher.utter_message(text=message)
+                    reply_Markup = {"inline_keyboard":[ [{ "text":"Localisation sur google maps", "url":result[9] }] ] }
+                    jsonaa = {
+                            "chat_id":tracker.current_state()['sender_id'],
+                            "text":message,
+                            "reply_markup": json.dumps(reply_Markup)
+                            }        
+                    dispatcher.utter_message(json_message=jsonaa)                                       
 
+            else:
+                dispatcher.utter_message(text="Désolé mais nous n'avons pas de pharmacie partenaire dans cette zone. Essayez en une autre 😊")
+        else:
+            ech = _search_location_specialites(location.lower(),True)
+            if ech: 
+                a = call_get_distance(ech[3],ech[4],5,1)
+                if a :
+                    for result in a:
+                        message = (
+                                    f"Je vous recommande : {result[1]} \n Adresse : {result[2]}\n"
+                                    f"Telephone : {result[3]}.\n"
+                                    f"Email: {'indisponible' if result[4] == 'null' else result[4]} \n"
+                                )
+                        reply_Markup = {"inline_keyboard":[ [{ "text":"Localisation sur google maps", "url":result[9] }] ] }
+                        jsonaa = {
+                                "chat_id":tracker.current_state()['sender_id'],
+                                "text":message,
+                                "reply_markup": json.dumps(reply_Markup)
+                                }        
+                        dispatcher.utter_message(json_message=jsonaa)
+                else :
+                    dispatcher.utter_message(text="Désolé mais nous n'avons pas de pharmacie partenaire dans cette zone. Essayez en une autre 😊")                    
+            else:
+                dispatcher.utter_message(text="Désolé mais nous n'avons pas de pharmacie partenaire dans cette zone. Essayez en une autre 😊")
+
+        ### This is how we were searching before ! (we keep it we never know)  ###
+        # results = _find_facilities_pharmacie(location.lower())
+        # dispatcher.utter_message(text=results)
         return [SlotSet("location", None)]
 
 
@@ -241,14 +297,17 @@ class ValidateHospitalisationForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         """Validate location value."""
 
-        if value.lower() in indiqueLieu(value.lower()):
+        if re.search(r"((\{\"lng\":)(\-?|\+?)?\d+(\.\d+)?),\s*((\{?\"lat\":)(\-?|\+?)?\d+(\.\d+)?)\}", value.lower()) :
+            return {"location": value}
+        elif value.lower() in _search_location_specialites(value.lower(),True):
             return {"location": value}
         else:
-            print("not loc")
             dispatcher.utter_message("Mauvaise localisation")
             # validation failed, set this slot to None, meaning the
             # user will be asked for the slot again
             return {"location": None}
+        
+
 
 #Class for form hospitalisation actions
 
@@ -263,15 +322,49 @@ class ActionHospitalisationSearching(Action):
                 
         results = ""
         intent = tracker.get_slot('intent_message')
+        specialite_id = _search_location_specialites(intent.lower(),False)
         location = tracker.get_slot('location')
 
-        if intent is None:
-            results = "Désolé une erreur s'est produite. Veuillez verifier vos informations"
+        if re.search(r"((\{\"lng\":)(\-?|\+?)?\d+(\.\d+)?),\s*((\{?\"lat\":)(\-?|\+?)?\d+(\.\d+)?)\}", location.lower()) :
+            datatopass = _format_responses(location,True)
+            #We extract and pass the lat datatopass[1] and the long datatopass[0] to the function
+            a = call_get_distance(datatopass[1],datatopass[0],5,specialite_id[0])
+            if a:
+                for result in a:
+                    message = (
+                                f"Je vous recommande : {result[1]} \n Adresse : {result[2]}\n"
+                                f"Telephone : {result[3]}.\n"
+                                f"Email: {'indisponible' if result[4] == 'null' else result[4]} \n"
+                            )
+                    # dispatcher.utter_message(text=message)
+                    reply_Markup = {"inline_keyboard":[ [{ "text":"Localisation sur google maps", "url":result[9] }] ] }
+                    jsonaa = {
+                            "chat_id":tracker.current_state()['sender_id'],
+                            "text":message,
+                            "reply_markup": json.dumps(reply_Markup)
+                            }        
+                    dispatcher.utter_message(json_message=jsonaa)            
+            else:
+                dispatcher.utter_message(text="Désolé mais nous n'avons pas de partenaires dans cette zone. Essayez en une autre 😊"    )            
         else:
-            results = _find_facilities_medecin(location.lower(),intent)
-
-        dispatcher.utter_message(text=results)
-        # dispatcher.utter_message(text=results)
+            ech = _search_location_specialites(location.lower(),True)
+            a = call_get_distance(ech[3],ech[4],5,specialite_id[0])
+            if a: 
+                for result in a:
+                    message = (
+                                f"Je vous recommande : {result[1]} \n Adresse : {result[2]}\n"
+                                f"Telephone : {result[3]}.\n"
+                                f"Email: {'indisponible' if result[4] == 'null' else result[4]} \n"
+                            )
+                    reply_Markup = {"inline_keyboard":[ [{ "text":"Localisation sur google maps", "url":result[9] }] ] }
+                    jsonaa = {
+                            "chat_id":tracker.current_state()['sender_id'],
+                            "text":message,
+                            "reply_markup": json.dumps(reply_Markup)
+                            }        
+                    dispatcher.utter_message(json_message=jsonaa)
+            else:
+                dispatcher.utter_message(text="Désolé mais nous n'avons pas de partenaires dans cette zone. Essayez en une autre 😊")
 
         return [SlotSet("intent_message", None),SlotSet("location", None)]
   
@@ -321,11 +414,11 @@ class ValidateMedecinForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         """Validate location value."""
 
-        if value.lower() in indiqueLieu(value.lower()):
-            print(value)
+        if re.search(r"((\{\"lng\":)(\-?|\+?)?\d+(\.\d+)?),\s*((\{?\"lat\":)(\-?|\+?)?\d+(\.\d+)?)\}", value.lower()) :
+            return {"location": value}
+        elif value.lower() in _search_location_specialites(value.lower(),True):
             return {"location": value}
         else:
-            print("not loc")
             dispatcher.utter_message("Mauvaise localisation")
             # validation failed, set this slot to None, meaning the
             # user will be asked for the slot again
@@ -341,7 +434,6 @@ class ValidateMedecinForm(FormValidationAction):
         """Validate medecin value."""
 
         if value.lower() in ["generaliste","généraliste","géneraliste","genéraliste"]:
-            print(value)
             return {"medecin_slot": "generaliste"}
         elif value.lower() in ["specialiste","spécialiste"]:
             return {"medecin_slot": "specialiste"}
@@ -360,7 +452,8 @@ class ValidateMedecinForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         """Validate specialiste value."""
 
-        if value.lower() in self.specialiste_db():
+        # if value.lower() in self.specialiste_db():
+        if value.lower() in _search_location_specialites(value.lower(),False):
             # validation succeeded, set the value of the "specialiste" slot to value
             return {"specialiste_slot": value}
         else:
@@ -391,22 +484,6 @@ class ValidateMedecinForm(FormValidationAction):
         #All slot filled
         return [SlotSet("requested_slot",None)]
     
-    # async def required_slots(
-    #     self,
-    #     slots_mapped_in_domain: List[Text],
-    #     dispatcher: "CollectingDispatcher",
-    #     tracker: "Tracker",
-    #     domain: "DomainDict",
-    # ) -> Optional[List[Text]]:
-    #     additional_slots = []
-    #     print(tracker.slots.get("medecin_slot"))
-    #     if tracker.slots.get("medecin_slot") == "specialiste":
-    #         # If the user wants to sit outside, ask
-    #         # if they want to sit in the shade or in the sun.
-    #         additional_slots.append("specialiste_slot")
-
-    #     return additional_slots + slots_mapped_in_domain
-
 
 #class for form medecin actions
 
@@ -422,18 +499,69 @@ class ActionMedecinSearching(Action):
         location = tracker.get_slot('location')
         slot_medecin = tracker.get_slot('medecin_slot')
         slot_specialiste = tracker.get_slot('specialiste_slot')
+        a = None
 
         if (slot_medecin is not None) and (slot_medecin.lower() in ["generaliste","généraliste","géneraliste","genéraliste"]):
             slot_medecin = "generaliste"
         elif (slot_medecin is not None) and (slot_medecin.lower() in ["specialiste","spécialiste"]):
             slot_medecin = "specialiste"
+        elif slot_specialiste is None and slot_medecin is None:
+            results = "Désolé une erreur s'est produite. Veuillez verifier vos informations et recommencez svp"
+            dispatcher.utter_message(text=results)
+            return [SlotSet("medecin_slot", None),SlotSet("specialiste_slot", None),SlotSet("location", None)]
 
-        if slot_specialiste is None and slot_medecin is None:
-            results = "Désolé une erreur s'est produite. Veuillez verifier vos informations"
-        elif slot_specialiste is None and slot_medecin == "generaliste":
-            results = _find_facilities_medecin(location,"medecin")
+        if re.search(r"((\{\"lng\":)(\-?|\+?)?\d+(\.\d+)?),\s*((\{?\"lat\":)(\-?|\+?)?\d+(\.\d+)?)\}", location.lower()) :
+            datatopass = _format_responses(location,True)
+            #We extract and pass the lat datatopass[1] and the long datatopass[0] to the function
+            if slot_specialiste is None and slot_medecin == "generaliste":
+                # results = _find_facilities_medecin(location,"medecin")
+                a = call_get_distance(datatopass[1],datatopass[0],5,4)
+            else:
+                specialite_id = _search_location_specialites(slot_specialiste.lower(),False)
+                # results = _find_facilities_medecin(location.lower(),slot_specialiste)
+                a = call_get_distance(datatopass[1],datatopass[0],5,specialite_id[0])
+            if a:
+                for result in a:
+                    message = (
+                                f"Je vous recommande : {result[1]} \n Adresse : {result[2]}\n"
+                                f"Telephone : {result[3]}.\n"
+                                f"Email: {'indisponible' if result[4] == 'null' else result[4]} \n"
+                            )
+                    # dispatcher.utter_message(text=message)
+                    reply_Markup = {"inline_keyboard":[ [{ "text":"Localisation sur google maps", "url":result[9] }] ] }
+                    jsonaa = {
+                            "chat_id":tracker.current_state()['sender_id'],
+                            "text":message,
+                            "reply_markup": json.dumps(reply_Markup)
+                            }        
+                    dispatcher.utter_message(json_message=jsonaa)            
+            else:
+                dispatcher.utter_message(text="Désolé mais nous n'avons pas de partenaires dans cette zone. Essayez en une autre 😊")    
         else:
-            results = _find_facilities_medecin(location.lower(),slot_specialiste)
-
-        dispatcher.utter_message(text=results)
+            ech = _search_location_specialites(location.lower(),True)
+            if slot_specialiste is None and slot_medecin == "generaliste":
+                # results = _find_facilities_medecin(location,"medecin")
+                a = call_get_distance(ech[3],ech[4],5,4)
+            else:
+                # results = _find_facilities_medecin(location.lower(),slot_specialiste)
+                specialite_id = _search_location_specialites(slot_specialiste.lower(),False)
+                a = call_get_distance(ech[3],ech[4],5,specialite_id[0])
+                
+            if a: 
+                for result in a:
+                    message = (
+                                f"Je vous recommande : {result[1]} \n Adresse : {result[2]}\n"
+                                f"Telephone : {result[3]}.\n"
+                                f"Email: {'indisponible' if result[4] == 'null' else result[4]} \n"
+                            )
+                    reply_Markup = {"inline_keyboard":[ [{ "text":"Localisation sur google maps", "url":result[9] }] ] }
+                    jsonaa = {
+                            "chat_id":tracker.current_state()['sender_id'],
+                            "text":message,
+                            "reply_markup": json.dumps(reply_Markup)
+                            }        
+                    dispatcher.utter_message(json_message=jsonaa)
+            else:
+                dispatcher.utter_message(text="Désolé mais nous n'avons pas de partenaires dans cette zone. Essayez en une autre 😊"    )
+                
         return [SlotSet("medecin_slot", None),SlotSet("specialiste_slot", None),SlotSet("location", None)]

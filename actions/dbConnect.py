@@ -2,6 +2,7 @@
 # python -m pip install mysql-connector //run this command if you face import error
 # references: https://www.w3schools.com/python/python_mysql_getstarted.asp
 
+from typing import Any
 import mysql.connector
 import traceback
 
@@ -32,6 +33,29 @@ def getData(query:str):
         except:
             print("Error occured while connecting to database or fetching data from database. Error Trace: {}".format(traceback.format_exc()))
             return []
+
+def call_get_distance(lat,lng,dist,spec)-> Any:
+    try:
+
+        mydb = mysql.connector.connect(
+                host="localhost",
+                user="root",
+                password="",
+                database="rasa_sante_bot"
+                )
+        cursor = mydb.cursor()
+        args = [lat, lng, dist,spec]
+        cursor.callproc('get_dist', args)
+        data = [r.fetchall() for r in cursor.stored_results()]
+        # for result in cursor.stored_results():
+        #     print(result.fetchall())
+        return data[0]
+
+    except:
+        print("Error occured while connecting to database or fetching data from database. Error Trace: {}".format(traceback.format_exc()))
+
+    finally:
+        cursor.close()
 
 
 # test the file before integrating with the bot by uncommenting the below line.
