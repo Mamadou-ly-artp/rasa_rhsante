@@ -1,4 +1,4 @@
-version: "3.0"
+version: '2.0'
 config:
   store_entities_as_slots: true
 session_config:
@@ -33,8 +33,6 @@ intents:
     use_entities: true
 - hopital:
     use_entities: true
-- ambulance:
-    use_entities: true
 - affirm:
     use_entities: true
 - deny:
@@ -49,68 +47,30 @@ slots:
   location:
     type: rasa.shared.core.slots.TextSlot
     initial_value: null
+    auto_fill: true
     influence_conversation: false
-    mappings:
-    - type: from_entity
-      entity: location
-      intent:
-      - inform
-      - medecin
-      not_intent: [chitchat,Salutations,goodbye]
-      conditions:
-      - active_loop: medecin_form
-        requested_slot: location
-    - type: from_entity
-      entity: location
-      intent:
-      - inform
-      - Pharmacies
-      conditions:
-      - active_loop: pharmacie_form
-        requested_slot: location
-    - type: from_entity
-      entity: location
-      intent:
-      - inform
-      - hopital
-      - clinique
-      - urgence
-      conditions:
-      - active_loop: hospitalisation_form
-        requested_slot: location
-    # - type: from_entity
-    #   entity: location
   intent_message:
     type: rasa.shared.core.slots.TextSlot
     initial_value: null
+    auto_fill: true
     influence_conversation: false
-    mappings:
-    - type: custom
   medecin_slot:
     type: rasa.shared.core.slots.CategoricalSlot
     initial_value: null
+    auto_fill: false
     influence_conversation: true
     values:
     - generaliste
     - specialiste
-    mappings:
-    - type: from_entity
-      entity: medecin
-      intent:
-      - inform
-      - medecin
-      conditions:
-      - active_loop: medecin_form
-        requested_slot: medecin_slot      
   requested_slot:
     type: rasa.shared.core.slots.TextSlot
     initial_value: null
+    auto_fill: true
     influence_conversation: false
-    mappings:
-    - type: custom
   specialiste_slot:
     type: rasa.shared.core.slots.CategoricalSlot
     initial_value: null
+    auto_fill: false
     influence_conversation: true
     values:
     - dentiste
@@ -134,21 +94,7 @@ slots:
     - stomatologue
     - clinique
     - hopital
-    mappings:
-    - entity: specialiste
-      intent:
-      - inform
-      - medecin
-      type: from_entity
-      conditions:
-      - active_loop: medecin_form
-        requested_slot: specialiste_slot      
 responses:
-  utter_give_location:
-  - text: "{text}" 
-    custom:
-      latitude: "{lat}"
-      longitude: "{long}"      
   utter_chitchat/ask_name:
   - text: Mon nom c'est Kiné 😎 .
   - text: je m'appelle Kiné 😊 .
@@ -240,9 +186,7 @@ actions:
 - utter_ask_whatelse
 - utter_after_deny
 - utter_did_that_help
-- utter_give_location
-- action_ask_location
-# - utter_iamabot
+- utter_iamabot
 forms:
   medecin_form:
     ignored_intents:
@@ -251,9 +195,24 @@ forms:
     - Remerciement
     - chitchat
     required_slots:
-    - location
-    - medecin_slot
-    - specialiste_slot
+      location:
+      - entity: location
+        intent:
+        - inform
+        - medecin
+        type: from_entity
+      medecin_slot:
+      - entity: medecin
+        intent:
+        - inform
+        - medecin
+        type: from_entity
+      specialiste_slot:
+      - entity: specialiste
+        intent:
+        - inform
+        - medecin
+        type: from_entity
   pharmacie_form:
     ignored_intents:
     - bot_challenge
@@ -261,7 +220,12 @@ forms:
     - Remerciement
     - chitchat
     required_slots:
-    - location
+      location:
+      - entity: location
+        intent:
+        - inform
+        - Pharmacies
+        type: from_entity
   hospitalisation_form:
     ignored_intents:
     - bot_challenge
@@ -269,5 +233,12 @@ forms:
     - Remerciement
     - chitchat
     required_slots:
-    - location
+      location:
+      - entity: location
+        intent:
+        - inform
+        - hopital
+        - clinique
+        - urgence
+        type: from_entity
 e2e_actions: []

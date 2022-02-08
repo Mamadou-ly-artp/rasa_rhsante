@@ -1,3 +1,4 @@
+recipe: default.v1
 # Configuration for Rasa NLU.
 # https://rasa.com/docs/rasa/nlu/components/
 language: fr
@@ -13,7 +14,16 @@ pipeline:
   - name: DIETClassifier
     epochs: 100
     model_confidence: softmax
-    constrain_similarities: true    
+    constrain_similarities: true  
+  - name: RegexEntityExtractor
+      # text will be processed with case insensitive as default
+    case_sensitive: False
+      # use lookup tables to extract entities
+    use_lookup_tables: True
+      # use regexes to extract entities
+    use_regexes: True
+      # use match word boundaries for lookup table
+    "use_word_boundaries": True       
   - name: EntitySynonymMapper
   - name: ResponseSelector
     epochs: 100
