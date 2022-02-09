@@ -242,7 +242,7 @@ actions:
 - utter_did_that_help
 - utter_give_location
 - action_ask_location
-# - utter_iamabot
+# - utter_iamabot ?
 forms:
   medecin_form:
     ignored_intents:
