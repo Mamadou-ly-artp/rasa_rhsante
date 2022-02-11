@@ -1,4 +1,4 @@
-version: "3.0"
+version: "2.0"
 config:
   store_entities_as_slots: true
 session_config:
@@ -45,72 +45,36 @@ entities:
 - location
 - medecin
 - specialiste
+
+#Slots version 2.x
 slots:
   location:
     type: rasa.shared.core.slots.TextSlot
     initial_value: null
+    auto_fill: true
     influence_conversation: false
-    mappings:
-    - type: from_entity
-      entity: location
-      intent:
-      - inform
-      - medecin
-      not_intent: [chitchat,Salutations,goodbye]
-      conditions:
-      - active_loop: medecin_form
-        requested_slot: location
-    - type: from_entity
-      entity: location
-      intent:
-      - inform
-      - Pharmacies
-      conditions:
-      - active_loop: pharmacie_form
-        requested_slot: location
-    - type: from_entity
-      entity: location
-      intent:
-      - inform
-      - hopital
-      - clinique
-      - urgence
-      conditions:
-      - active_loop: hospitalisation_form
-        requested_slot: location
-    # - type: from_entity
-    #   entity: location
   intent_message:
     type: rasa.shared.core.slots.TextSlot
     initial_value: null
+    auto_fill: true
     influence_conversation: false
-    mappings:
-    - type: custom
   medecin_slot:
     type: rasa.shared.core.slots.CategoricalSlot
     initial_value: null
+    auto_fill: false
     influence_conversation: true
     values:
     - generaliste
     - specialiste
-    mappings:
-    - type: from_entity
-      entity: medecin
-      intent:
-      - inform
-      - medecin
-      conditions:
-      - active_loop: medecin_form
-        requested_slot: medecin_slot      
   requested_slot:
     type: rasa.shared.core.slots.TextSlot
     initial_value: null
+    auto_fill: true
     influence_conversation: false
-    mappings:
-    - type: custom
   specialiste_slot:
     type: rasa.shared.core.slots.CategoricalSlot
     initial_value: null
+    auto_fill: false
     influence_conversation: true
     values:
     - dentiste
@@ -134,15 +98,105 @@ slots:
     - stomatologue
     - clinique
     - hopital
-    mappings:
-    - entity: specialiste
-      intent:
-      - inform
-      - medecin
-      type: from_entity
-      conditions:
-      - active_loop: medecin_form
-        requested_slot: specialiste_slot      
+# slots version 3.x
+# slots:
+#   location:
+#     type: rasa.shared.core.slots.TextSlot
+#     initial_value: null
+#     influence_conversation: false
+#     mappings:
+#     - type: from_entity
+#       entity: location
+#       intent:
+#       - inform
+#       - medecin
+#       not_intent: [chitchat,Salutations,goodbye]
+#       conditions:
+#       - active_loop: medecin_form
+#         requested_slot: location
+#     - type: from_entity
+#       entity: location
+#       intent:
+#       - inform
+#       - Pharmacies
+#       conditions:
+#       - active_loop: pharmacie_form
+#         requested_slot: location
+#     - type: from_entity
+#       entity: location
+#       intent:
+#       - inform
+#       - hopital
+#       - clinique
+#       - urgence
+#       conditions:
+#       - active_loop: hospitalisation_form
+#         requested_slot: location
+#     # - type: from_entity
+#     #   entity: location
+#   intent_message:
+#     type: rasa.shared.core.slots.TextSlot
+#     initial_value: null
+#     influence_conversation: false
+#     mappings:
+#     - type: custom
+#   medecin_slot:
+#     type: rasa.shared.core.slots.CategoricalSlot
+#     initial_value: null
+#     influence_conversation: true
+#     values:
+#     - generaliste
+#     - specialiste
+#     mappings:
+#     - type: from_entity
+#       entity: medecin
+#       intent:
+#       - inform
+#       - medecin
+#       conditions:
+#       - active_loop: medecin_form
+#         requested_slot: medecin_slot      
+#   requested_slot:
+#     type: rasa.shared.core.slots.TextSlot
+#     initial_value: null
+#     influence_conversation: false
+#     mappings:
+#     - type: custom
+#   specialiste_slot:
+#     type: rasa.shared.core.slots.CategoricalSlot
+#     initial_value: null
+#     influence_conversation: true
+#     values:
+#     - dentiste
+#     - ophtalmologue
+#     - gynecologue
+#     - laboratoire
+#     - cardiologue
+#     - kinesitherapeute
+#     - imagerie medicale
+#     - orl
+#     - neurologue
+#     - chirurgien orthopedique
+#     - urologue
+#     - gastro-enterologue
+#     - dermatologue
+#     - rhumatologue
+#     - endocrinologue
+#     - orthoptiste
+#     - audioprothesiste
+#     - pediatre
+#     - stomatologue
+#     - clinique
+#     - hopital
+#     mappings:
+#     - entity: specialiste
+#       intent:
+#       - inform
+#       - medecin
+#       type: from_entity
+#       conditions:
+#       - active_loop: medecin_form
+#         requested_slot: specialiste_slot      
 responses:
   utter_give_location:
   - text: "{text}" 
@@ -243,6 +297,8 @@ actions:
 - utter_give_location
 - action_ask_location
 # - utter_iamabot ?
+
+#forms 2.x 
 forms:
   medecin_form:
     ignored_intents:
@@ -251,9 +307,24 @@ forms:
     - Remerciement
     - chitchat
     required_slots:
-    - location
-    - medecin_slot
-    - specialiste_slot
+      location:
+      - entity: location
+        intent:
+        - inform
+        - medecin
+        type: from_entity
+      medecin_slot:
+      - entity: medecin
+        intent:
+        - inform
+        - medecin
+        type: from_entity
+      specialiste_slot:
+      - entity: specialiste
+        intent:
+        - inform
+        - medecin
+        type: from_entity
   pharmacie_form:
     ignored_intents:
     - bot_challenge
@@ -261,7 +332,12 @@ forms:
     - Remerciement
     - chitchat
     required_slots:
-    - location
+      location:
+      - entity: location
+        intent:
+        - inform
+        - Pharmacies
+        type: from_entity
   hospitalisation_form:
     ignored_intents:
     - bot_challenge
@@ -269,5 +345,41 @@ forms:
     - Remerciement
     - chitchat
     required_slots:
-    - location
+      location:
+      - entity: location
+        intent:
+        - inform
+        - hopital
+        - clinique
+        - urgence
+        type: from_entity
+        
+#forms 3.x        
+# forms:
+#   medecin_form:
+#     ignored_intents:
+#     - bot_challenge
+#     - Salutations
+#     - Remerciement
+#     - chitchat
+#     required_slots:
+#     - location
+#     - medecin_slot
+#     - specialiste_slot
+#   pharmacie_form:
+#     ignored_intents:
+#     - bot_challenge
+#     - Salutations
+#     - Remerciement
+#     - chitchat
+#     required_slots:
+#     - location
+#   hospitalisation_form:
+#     ignored_intents:
+#     - bot_challenge
+#     - Salutations
+#     - Remerciement
+#     - chitchat
+#     required_slots:
+#     - location
 e2e_actions: []
