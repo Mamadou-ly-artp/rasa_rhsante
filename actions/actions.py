@@ -233,9 +233,10 @@ class ActionPharmacieSearching(Action):
             #We extract and pass the lat datatopass[1] and the long datatopass[0] to the function
             a = call_get_distance(datatopass[1],datatopass[0],5,1)
             if a:
+                dispatcher.utter_message(text="Je vous recommande les adresses suivantes selon votre localisation")
                 for result in a:
                     message = (
-                                f"Je vous recommande : {result[1]} \n Adresse : {result[2]}\n"
+                                f"Nom : {result[1]} \n Adresse : {result[2]}\n"
                                 f"Telephone : {result[3]}.\n"
                                 f"Email: {'indisponible' if result[4] == 'null' else result[4]} \n"
                             )
@@ -255,9 +256,10 @@ class ActionPharmacieSearching(Action):
             if ech: 
                 a = call_get_distance(ech[3],ech[4],5,1)
                 if a :
+                    dispatcher.utter_message(text="Je vous recommande les adresses suivantes selon votre localisation")
                     for result in a:
                         message = (
-                                    f"Je vous recommande : {result[1]} \n Adresse : {result[2]}\n"
+                                    f"Nom : {result[1]} \n Adresse : {result[2]}\n"
                                     f"Telephone : {result[3]}.\n"
                                     f"Email: {'indisponible' if result[4] == 'null' else result[4]} \n"
                                 )
@@ -330,9 +332,10 @@ class ActionHospitalisationSearching(Action):
             #We extract and pass the lat datatopass[1] and the long datatopass[0] to the function
             a = call_get_distance(datatopass[1],datatopass[0],5,specialite_id[0])
             if a:
+                dispatcher.utter_message(text="Je vous recommande les adresses suivantes selon votre localisation")                
                 for result in a:
                     message = (
-                                f"Je vous recommande : {result[1]} \n Adresse : {result[2]}\n"
+                                f"Nom : {result[1]} \n Adresse : {result[2]}\n"
                                 f"Telephone : {result[3]}.\n"
                                 f"Email: {'indisponible' if result[4] == 'null' else result[4]} \n"
                             )
@@ -350,9 +353,10 @@ class ActionHospitalisationSearching(Action):
             ech = _search_location_specialites(location.lower(),True)
             a = call_get_distance(ech[3],ech[4],5,specialite_id[0])
             if a: 
+                dispatcher.utter_message(text="Je vous recommande les adresses suivantes selon votre localisation")
                 for result in a:
                     message = (
-                                f"Je vous recommande : {result[1]} \n Adresse : {result[2]}\n"
+                                f"Nom : {result[1]} \n Adresse : {result[2]}\n"
                                 f"Telephone : {result[3]}.\n"
                                 f"Email: {'indisponible' if result[4] == 'null' else result[4]} \n"
                             )
@@ -521,9 +525,10 @@ class ActionMedecinSearching(Action):
                 # results = _find_facilities_medecin(location.lower(),slot_specialiste)
                 a = call_get_distance(datatopass[1],datatopass[0],5,specialite_id[0])
             if a:
+                dispatcher.utter_message(text="Je vous recommande les adresses suivantes selon votre localisation")
                 for result in a:
                     message = (
-                                f"Je vous recommande : {result[1]} \n Adresse : {result[2]}\n"
+                                f"Nom : {result[1]} \n Adresse : {result[2]}\n"
                                 f"Telephone : {result[3]}.\n"
                                 f"Email: {'indisponible' if result[4] == 'null' else result[4]} \n"
                             )
@@ -548,9 +553,10 @@ class ActionMedecinSearching(Action):
                 a = call_get_distance(ech[3],ech[4],5,specialite_id[0])
                 
             if a: 
+                dispatcher.utter_message(text="Je vous recommande les adresses suivantes selon votre localisation")
                 for result in a:
                     message = (
-                                f"Je vous recommande : {result[1]} \n Adresse : {result[2]}\n"
+                                f"Nom : {result[1]} \n Adresse : {result[2]}\n"
                                 f"Telephone : {result[3]}.\n"
                                 f"Email: {'indisponible' if result[4] == 'null' else result[4]} \n"
                             )
