@@ -149,7 +149,7 @@ class AskForLocationAction(Action):
         reply_Markup = {"keyboard":[ [{ "text":"Appuyez pour envoyer votre localisation", "request_location":True }] ] , "one_time_keyboard":True }
         jsonaa = {
                 "chat_id":tracker.current_state()['sender_id'],
-                "text":"Pouvez vous partagez avec nous votre localisation svp ? \n Vous pouvez soit écrire du texte ou appuyer sur le boutton ",
+                "text":"Pouvez vous partager avec nous votre localisation svp ? \n Vous pouvez soit écrire du texte ou appuyer sur le boutton ",
                 "reply_markup": json.dumps(reply_Markup)
                 }        
         dispatcher.utter_message(json_message=jsonaa)
